@@ -2,40 +2,766 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ICNT Laboratory</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Derenik Petrosyan">
-    <link rel="icon" href="C:\Users\icnt_\PycharmProjects\icnt-site\Lab logo.png">
+    <meta name="description" content="Innovation Center for Nanoscience and Technology — A. B. Nalbandyan Institute of Chemical Physics, NAS RA">
+    <title>ICNT | Innovation Center for Nanoscience and Technology</title>
+
+    <link rel="icon" href="Lab logo.png">
+
+    <style>
+        :root {
+            --navy: #0b1f33;
+            --blue: #1167b1;
+            --cyan: #00a6c8;
+            --light: #f4f8fc;
+            --white: #ffffff;
+            --text: #243447;
+            --muted: #66788a;
+            --line: #dfe8f1;
+            --shadow: 0 18px 45px rgba(11, 31, 51, .10);
+            --radius: 18px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(223,232,241,.9);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .brand-mark {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            font-weight: 900;
+            letter-spacing: -1px;
+            box-shadow: 0 8px 20px rgba(17,103,177,.22);
+        }
+
+        .brand small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .brand span { font-size: 15px; line-height: 1.15; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: #415568;
+            transition: .2s ease;
+        }
+
+        .nav-links a:hover { color: var(--blue); }
+
+        .nav-cta {
+            padding: 10px 17px;
+            border-radius: 999px;
+            color: white !important;
+            background: var(--navy);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(0,166,200,.28), transparent 28%),
+                radial-gradient(circle at 15% 80%, rgba(17,103,177,.35), transparent 30%),
+                linear-gradient(135deg, #071725 0%, #0b2c49 55%, #0d5371 100%);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .13;
+            background-image:
+                linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px);
+            background-size: 42px 42px;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            min-height: 620px;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+            padding: 90px 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 13px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 999px;
+            background: rgba(255,255,255,.07);
+            color: #d9f8ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #5ce1ff;
+            box-shadow: 0 0 12px #5ce1ff;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.03;
+            letter-spacing: -2.5px;
+            margin: 22px 0;
+            max-width: 760px;
+        }
+
+        .hero h1 span { color: #66dcf4; }
+
+        .hero p {
+            max-width: 700px;
+            color: #d7e7f3;
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 20px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            transition: .2s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--navy);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,.25);
+            color: white;
+            background: rgba(255,255,255,.07);
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .hero-card {
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 24px;
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 25px 70px rgba(0,0,0,.22);
+        }
+
+        .hero-card h3 { font-size: 18px; margin-bottom: 16px; }
+        .hero-card p { font-size: 14px; color: #d2e4ef; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            padding: 17px;
+            border-radius: 14px;
+            background: rgba(0,0,0,.16);
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .stat strong { display: block; font-size: 23px; color: white; }
+        .stat span { font-size: 11px; color: #bcd2e1; }
+
+        /* SECTIONS */
+        section { padding: 95px 0; }
+
+        .section-head {
+            max-width: 760px;
+            margin-bottom: 45px;
+        }
+
+        .section-kicker {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+            color: var(--navy);
+        }
+
+        .section-head p {
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.35fr .65fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .about-copy p + p { margin-top: 17px; }
+
+        .info-card {
+            padding: 27px;
+            background: var(--light);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+
+        .info-card strong {
+            display: block;
+            color: var(--navy);
+            font-size: 30px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .info-card span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .info-card + .info-card { margin-top: 13px; }
+
+        .goals {
+            background: var(--light);
+        }
+
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .goal {
+            padding: 28px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: 0 8px 25px rgba(11,31,51,.04);
+        }
+
+        .goal-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            font-size: 12px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .goal h3 { color: var(--navy); font-size: 18px; margin-bottom: 7px; }
+        .goal p { color: var(--muted); font-size: 14px; }
+
+        /* FACILITIES */
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .facility {
+            position: relative;
+            overflow: hidden;
+            padding: 31px;
+            min-height: 220px;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: linear-gradient(145deg, #fff, #f7fbfe);
+        }
+
+        .facility::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            right: -55px;
+            top: -55px;
+            border-radius: 50%;
+            background: rgba(0,166,200,.08);
+        }
+
+        .facility-icon {
+            font-size: 28px;
+            margin-bottom: 17px;
+        }
+
+        .facility h3 { color: var(--navy); margin-bottom: 8px; }
+        .facility p { color: var(--muted); font-size: 14px; max-width: 470px; }
+
+        /* VIDEOS */
+        .videos {
+            background: #071725;
+            color: white;
+        }
+
+        .videos .section-head h2 { color: white; }
+        .videos .section-head p { color: #b8ccda; }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .video-card {
+            overflow: hidden;
+            background: #0d263b;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 50px rgba(0,0,0,.22);
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #020b13;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info { padding: 20px 22px 24px; }
+        .video-info h3 { font-size: 18px; margin-bottom: 5px; }
+        .video-info p { color: #abc0ce; font-size: 13px; }
+
+        /* FOOTER */
+        footer {
+            padding: 55px 0 25px;
+            background: #04111d;
+            color: #b9cbd7;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid rgba(255,255,255,.09);
+        }
+
+        footer h3 { color: white; margin-bottom: 12px; }
+        footer p { font-size: 13px; max-width: 650px; }
+        .footer-right { text-align: right; }
+
+        .copyright {
+            padding-top: 20px;
+            font-size: 12px;
+            color: #7890a0;
+            text-align: center;
+        }
+
+        /* MOBILE */
+        @media (max-width: 850px) {
+            .nav-links { display: none; }
+            .hero-inner, .about-grid { grid-template-columns: 1fr; }
+            .hero-inner { min-height: auto; padding: 75px 0; }
+            .hero-card { max-width: 600px; }
+            .goal-grid, .facility-grid, .video-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-right { text-align: left; }
+        }
+
+        @media (max-width: 520px) {
+            .container { width: min(100% - 26px, 1160px); }
+            section { padding: 70px 0; }
+            .hero h1 { letter-spacing: -1.5px; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
+
 <body>
-Նանոգիտության և տեխնոլոգիաների ինովացիոն կենտրոնը (ICNT) ստեղծվել է ՀՀ ԳԱԱ Քիմիական ֆիզիկայի ինստիտուտում միայն 2020 թվականին՝ ՀՀ կառավարության կողմից մրցութային հիմունքներով ֆինանսավորվող խոշոր դրամաշնորհային ծրագրի շրջանակներում։ Սա խոշոր ծրագիր է, որում ներգրավված են Հայաստանի տասը գիտական կազմակերպություններ։ Մեր կենտրոնի բյուջեն այս կարճ ժամանակահատվածում հասել է 1 մլն ԱՄՆ դոլարի, և 80%-ը վերաբերում է սարքավորումներին, մասնավորապես բազմաֆունկցիոնալ սարքավորման Pioneer 180 PLD System Excimer Laser-ով, DC/RF մագնետրոններով, բարձր ճնշման RHEED համակարգով և քիմիական գոլորշիների նստեցման համակարգով: . Նման նախաձեռնությունը Հայաստանում նախադեպը չունի։ Սարքը կենտրոնին թույլ է տալիս լուծել տարբեր տեխնոլոգիական խնդիրներ. բարակ թաղանթի պատրաստում խնամքի ամենակարևոր տեխնոլոգիաների միջոցով և կարող է օգտագործվել տեսական արդյունքների փորձարկման համար, որոնք պահանջում են փորձարարական տվյալների բարձր ճշգրտություն:ՀՀ ԳԱԱ Քիմիական ֆիզիկայի ինստիտուտ-ի Նանոգիտության և տեխնոլոգիաների ինովացիոն կենտրոնը նախաձեռնեց գերազանցել որպես միջդիսցիպլինար կենտրոն՝ գիտական ներուժը բացելով ավելի լայն գիտական խմբերի համար երկրում և նրա սահմաններից դուրս՝ նպաստելով գիտական դիվանագիտությանը քաղաքականություն մշակողների և կառավարական մարմինների հետ հանդիպումների և սեմինարների միջոցով:
 
-Նպատակ
+<header class="navbar">
+    <div class="container nav-inner">
+        <a class="brand" href="#home" aria-label="ICNT home">
+            <div class="brand-mark">IC</div>
+            <div>
+                <small>NAS RA · ICP</small>
+                <span>Innovation Center<br>for Nanoscience & Technology</span>
+            </div>
+        </a>
 
-Գործընկեր միջազգային կազմակերպությունների հետ սերտ համագործակցության հաստատում, խորացում և ընդլայնում.
-Բարձր տեխնոլոգիական միջավայրի ստեղծում և կրթության որակի էական բարելավում.
-Նոր կրթական ծրագրերի մշակում և իրականացում, լաբորատոր աշխատանքներ.
-Նպաստել ուսանողների կողմից հիմնական գիտելիքների ձեռքբերմանը և գործնական հմտությունների զարգացմանը, նրանց ներգրավմանը գիտական աշխատանքին, գիտական կարիերայի խթանմանը և նորարարական ծրագրերի իրականացմանը.
-ՏՏ ոլորտի գիտակրթական բազայի ձևավորում, մասնակցություն աշխատաշուկայի ձևավորմանը.
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#goals">Objectives</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a class="nav-cta" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-Կառուցվածք
+<main>
 
-Նանոկառուցվածքային բարակ թաղանթի (NTF) պատրաստման և բնութագրման սենյակ
+<section class="hero" id="home">
+    <div class="container hero-inner">
+        <div>
+            <div class="eyebrow">A. B. Nalbandyan Institute of Chemical Physics</div>
+            <h1>Innovation Center for <span>Nanoscience</span> & Technology</h1>
+            <p>
+                An interdisciplinary research and technology environment for nanostructured
+                thin films, advanced fabrication, characterization, modeling and education.
+            </p>
 
-ISO 8-5 «Մաքուր սենյակ»՝ ձեռք բերելով նանոկառուցվածքային համակարգեր՝ համակցված PLD, DC և RF մագնետրոնային ցրման միջոցով:
+            <div class="hero-buttons">
+                <a class="btn btn-primary" href="#about">Explore the Center</a>
+                <a class="btn btn-secondary" href="#videos">Watch our videos</a>
+            </div>
+        </div>
 
-Թաց լաբորատորիա
+        <aside class="hero-card">
+            <h3>Research & Technology Platform</h3>
+            <p>
+                The Center combines experimental thin-film technologies with computational
+                modeling, characterization and practical education.
+            </p>
 
-Ենթաշերտերի, թիրախների, բարակ թաղանթների մշակում, NTF սինթեզ, էլեկտրաքիմիական սինթեզ, կրակում, սոլ-գել և այլն։
+            <div class="stat-grid">
+                <div class="stat">
+                    <strong>2020</strong>
+                    <span>Center established</span>
+                </div>
+                <div class="stat">
+                    <strong>$1M</strong>
+                    <span>Budget reached</span>
+                </div>
+                <div class="stat">
+                    <strong>80%</strong>
+                    <span>Equipment-related budget</span>
+                </div>
+                <div class="stat">
+                    <strong>10</strong>
+                    <span>Scientific organizations involved</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
 
-Հաշվողական մոդելավորման սենյակ
+<section id="about">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-kicker">About the Center</div>
+            <h2>Building an interdisciplinary environment for nanoscience.</h2>
+        </div>
 
-Պահանջվող ֆիզիկական հատկություններով NTF-ի նստեցման գործընթացի մոդելավորում՝ օպտիմալ պարամետրերի որոշմամբ:
+        <div class="about-grid">
+            <div class="about-copy">
+                <p>
+                    Նանոգիտության և տեխնոլոգիաների ինովացիոն կենտրոնը (ICNT) ստեղծվել է
+                    ՀՀ ԳԱԱ Քիմիական ֆիզիկայի ինստիտուտում 2020 թվականին՝ ՀՀ կառավարության
+                    կողմից մրցութային հիմունքներով ֆինանսավորվող խոշոր դրամաշնորհային ծրագրի
+                    շրջանակներում։ Ծրագրում ներգրավված են Հայաստանի տասը գիտական կազմակերպություններ։
+                </p>
+                <p>
+                    Կենտրոնի բյուջեն այս կարճ ժամանակահատվածում հասել է 1 մլն ԱՄՆ դոլարի,
+                    որի 80%-ը վերաբերում է սարքավորումներին, մասնավորապես բազմաֆունկցիոնալ
+                    Pioneer 180 PLD System-ին՝ Excimer Laser-ով, DC/RF մագնետրոններով,
+                    բարձր ճնշման RHEED համակարգով և քիմիական գոլորշիների նստեցման համակարգով։
+                </p>
+                <p>
+                    Կենտրոնը զարգանում է որպես միջդիսցիպլինար հարթակ՝ բացելով գիտական ներուժը
+                    Հայաստանի և արտերկրի ավելի լայն գիտական խմբերի համար և նպաստելով գիտական
+                    դիվանագիտությանը։
+                </p>
+            </div>
 
-Հանդիպում սենյակ
+            <div>
+                <div class="info-card">
+                    <strong>PLD</strong>
+                    <span>Pulsed Laser Deposition</span>
+                </div>
+                <div class="info-card">
+                    <strong>DC / RF</strong>
+                    <span>Magnetron sputtering</span>
+                </div>
+                <div class="info-card">
+                    <strong>CVD</strong>
+                    <span>Chemical vapor deposition</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-Կենտրոնի և համակարգում ընթացիկ գործունեության կազմակերպում.
+<section class="goals" id="goals">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-kicker">Objectives</div>
+            <h2>Science, education and international collaboration.</h2>
+            <p>Հիմնական նպատակները և զարգացման ուղղությունները.</p>
+        </div>
 
+        <div class="goal-grid">
+            <article class="goal">
+                <div class="goal-number">01</div>
+                <h3>International Collaboration</h3>
+                <p>Գործընկեր միջազգային կազմակերպությունների հետ սերտ համագործակցության հաստատում, խորացում և ընդլայնում։</p>
+            </article>
+
+            <article class="goal">
+                <div class="goal-number">02</div>
+                <h3>High-Tech Environment</h3>
+                <p>Բարձր տեխնոլոգիական միջավայրի ստեղծում և կրթության որակի էական բարելավում։</p>
+            </article>
+
+            <article class="goal">
+                <div class="goal-number">03</div>
+                <h3>Education & Laboratory Training</h3>
+                <p>Նոր կրթական ծրագրերի մշակում և իրականացում, լաբորատոր աշխատանքներ։</p>
+            </article>
+
+            <article class="goal">
+                <div class="goal-number">04</div>
+                <h3>Student Development</h3>
+                <p>Ուսանողների գործնական հմտությունների զարգացում, գիտական աշխատանքում ներգրավում և գիտական կարիերայի խթանում։</p>
+            </article>
+
+            <article class="goal">
+                <div class="goal-number">05</div>
+                <h3>Innovation</h3>
+                <p>Նորարարական ծրագրերի իրականացմանը և գիտակրթական միջավայրի զարգացմանը նպաստում։</p>
+            </article>
+
+            <article class="goal">
+                <div class="goal-number">06</div>
+                <h3>IT & Workforce</h3>
+                <p>ՏՏ ոլորտի գիտակրթական բազայի ձևավորում և մասնակցություն աշխատաշուկայի ձևավորմանը։</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="facilities">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-kicker">Infrastructure</div>
+            <h2>Research spaces & capabilities.</h2>
+            <p>Կենտրոնի հիմնական լաբորատոր և հետազոտական ենթակառուցվածքները.</p>
+        </div>
+
+        <div class="facility-grid">
+            <article class="facility">
+                <div class="facility-icon">◈</div>
+                <h3>Nanostructured Thin Film Preparation & Characterization</h3>
+                <p>
+                    ISO 8 «Մաքուր սենյակ»՝ նանոկառուցվածքային համակարգերի պատրաստման համար՝
+                    PLD, DC և RF մագնետրոնային ցրման համակցմամբ։
+                </p>
+            </article>
+
+            <article class="facility">
+                <div class="facility-icon">⌬</div>
+                <h3>Wet Laboratory</h3>
+                <p>
+                    Ենթաշերտերի, թիրախների և բարակ թաղանթների մշակում, NTF սինթեզ,
+                    էլեկտրաքիմիական սինթեզ, կրակում, սոլ-գել և այլ գործընթացներ։
+                </p>
+            </article>
+
+            <article class="facility">
+                <div class="facility-icon">∿</div>
+                <h3>Computational Modeling Room</h3>
+                <p>
+                    Պահանջվող ֆիզիկական հատկություններով NTF-ի նստեցման գործընթացի
+                    մոդելավորում՝ օպտիմալ պարամետրերի որոշմամբ։
+                </p>
+            </article>
+
+            <article class="facility">
+                <div class="facility-icon">◎</div>
+                <h3>Meeting Room</h3>
+                <p>
+                    Կենտրոնի և համակարգում ընթացիկ գործունեության կազմակերպում,
+                    գիտական քննարկումներ և համագործակցության հանդիպումներ։
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="videos" id="videos">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-kicker">Media</div>
+            <h2>Explore ICNT in action.</h2>
+            <p>
+                Դիտեք կենտրոնի գործունեությունը ներկայացնող երկու տեսանյութերը։
+                YouTube տեսանյութերը ներկառուցված են անմիջապես կայքի մեջ։
+            </p>
+        </div>
+
+        <div class="video-grid">
+            <article class="video-card">
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/oenE2E36iCU"
+                        title="ICNT video 1"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>ICNT — Video 01</h3>
+                    <p>Innovation Center for Nanoscience and Technology</p>
+                </div>
+            </article>
+
+            <article class="video-card">
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/sfZoZxaOPFk"
+                        title="ICNT video 2"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>ICNT — Video 02</h3>
+                    <p>Innovation Center for Nanoscience and Technology</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-kicker">Contact</div>
+            <h2>Connect with the Center.</h2>
+            <p>
+                A research and training environment for nanoscience, thin films,
+                advanced technologies and interdisciplinary collaboration.
+            </p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>ICNT</h3>
+                <p>
+                    Innovation Center for Nanoscience and Technology<br>
+                    A. B. Nalbandyan Institute of Chemical Physics, NAS RA
+                </p>
+            </div>
+            <div class="footer-right">
+                <h3>Research • Technology • Education</h3>
+                <p>© 2026 ICNT. All rights reserved.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            Designed for the Innovation Center for Nanoscience and Technology.
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
