@@ -464,6 +464,43 @@
             .hero h1 { letter-spacing: -1.5px; }
             .stat-grid { grid-template-columns: 1fr 1fr; }
         }
+    
+        /* LANGUAGE TOGGLE */
+        .language-toggle { display:flex; align-items:center; gap:4px; padding:4px; border:1px solid var(--line); border-radius:999px; background:#f7fafc; }
+        .lang-btn { border:0; background:transparent; color:#607487; font:inherit; font-size:12px; font-weight:800; padding:7px 10px; border-radius:999px; cursor:pointer; transition:.2s; }
+        .lang-btn.active { background:var(--navy); color:#fff; }
+        .mobile-menu { display:none; }
+
+        /* EQUIPMENT */
+        .equipment { background:#f7fafc; }
+        .equipment-group { margin-top:28px; }
+        .equipment-group-title { display:flex; align-items:center; gap:14px; margin-bottom:18px; color:var(--navy); font-size:24px; }
+        .equipment-group-title .eq-number { width:38px; height:38px; display:grid; place-items:center; border-radius:11px; color:#fff; background:linear-gradient(135deg,var(--blue),var(--cyan)); font-size:13px; font-weight:900; }
+        .equipment-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+        .equipment-card { padding:23px; min-height:205px; background:#fff; border:1px solid var(--line); border-radius:var(--radius); transition:.25s ease; }
+        .equipment-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); border-color:#c7dcea; }
+        .equipment-icon { font-size:26px; margin-bottom:13px; color:var(--blue); }
+        .equipment-card h4 { color:var(--navy); font-size:17px; margin-bottom:8px; }
+        .equipment-card p { color:var(--muted); font-size:13px; line-height:1.65; }
+        .equipment-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:13px; }
+        .equipment-tags span { padding:4px 8px; border-radius:999px; background:#eef6fb; color:var(--blue); font-size:10px; font-weight:800; }
+
+        /* CONTACT */
+        .contact-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:25px; align-items:stretch; }
+        .contact-card { padding:30px; border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(145deg,#fff,#f7fbfe); }
+        .contact-item { display:flex; gap:15px; align-items:flex-start; padding:18px 0; border-bottom:1px solid var(--line); }
+        .contact-item:last-child { border-bottom:0; }
+        .contact-icon { width:42px; height:42px; flex:0 0 42px; display:grid; place-items:center; border-radius:12px; background:#eaf5fb; color:var(--blue); font-weight:900; }
+        .contact-item strong { display:block; color:var(--navy); font-size:13px; margin-bottom:3px; }
+        .contact-item a, .contact-item span { color:var(--muted); font-size:14px; }
+        .contact-item a:hover { color:var(--blue); }
+        .contact-highlight { color:#fff; background:linear-gradient(145deg,#0b1f33,#0d5371); border:0; }
+        .contact-highlight h3 { color:#fff; font-size:27px; margin-bottom:12px; }
+        .contact-highlight p { color:#c9dce8; font-size:14px; }
+        .contact-highlight .address { margin-top:24px; padding:18px; border:1px solid rgba(255,255,255,.14); border-radius:14px; background:rgba(255,255,255,.06); }
+
+        @media (max-width: 1050px) { .equipment-grid { grid-template-columns:repeat(2,1fr); } .nav-links { gap:14px; } }
+        @media (max-width: 850px) { .nav-links { display:none; } .language-toggle { margin-left:auto; } .equipment-grid,.contact-grid { grid-template-columns:1fr; } }
     </style>
 </head>
 
@@ -481,11 +518,13 @@
 
         <nav>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#goals">Objectives</a></li>
-                <li><a href="#facilities">Facilities</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a class="nav-cta" href="#contact">Contact</a></li>
+                <li><a href="#about" data-en="About" data-hy="Մեր մասին">About</a></li>
+                <li><a href="#goals" data-en="Objectives" data-hy="Նպատակներ">Objectives</a></li>
+                <li><a href="#facilities" data-en="Facilities" data-hy="Ենթակառուցվածք">Facilities</a></li>
+                <li><a href="#equipment" data-en="Equipment" data-hy="Սարքավորումներ">Equipment</a></li>
+                <li><a href="#videos" data-en="Videos" data-hy="Տեսանյութեր">Videos</a></li>
+                <li><a class="nav-cta" href="#contact" data-en="Contact" data-hy="Կապ">Contact</a></li>
+                <li><div class="language-toggle" aria-label="Language selector"><button class="lang-btn active" data-lang="en">EN</button><button class="lang-btn" data-lang="hy">ՀԱՅ</button></div></li>
             </ul>
         </nav>
     </div>
@@ -681,6 +720,40 @@
     </div>
 </section>
 
+<section class="equipment" id="equipment">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-kicker" data-en="Equipment" data-hy="Սարքավորումներ">Equipment</div>
+            <h2 data-en="Advanced fabrication and research equipment." data-hy="Առաջադեմ սարքավորումներ՝ պատրաստման և հետազոտության համար։">Advanced fabrication and research equipment.</h2>
+            <p data-en="The ICNT infrastructure combines thin-film deposition, microfabrication and advanced characterization capabilities." data-hy="ICNT-ի ենթակառուցվածքը համատեղում է բարակ թաղանթների նստեցումը, միկրոֆաբրիկացումը և առաջադեմ բնութագրումը։">The ICNT infrastructure combines thin-film deposition, microfabrication and advanced characterization capabilities.</p>
+        </div>
+
+        <div class="equipment-group">
+            <h3 class="equipment-group-title"><span class="eq-number">01</span><span data-en="Deposition & Microfabrication Equipment" data-hy="Դեպոզիշն և միկրոֆաբրիկացման սարքեր">Deposition & Microfabrication Equipment</span></h3>
+            <div class="equipment-grid">
+                <article class="equipment-card"><div class="equipment-icon">◉</div><h4>PLD — Pulsed Laser Deposition</h4><p data-en="Thin-film deposition using pulsed excimer-laser ablation for controlled growth of functional nanostructured materials." data-hy="Բարակ թաղանթների նստեցում իմպուլսային էքսիմեր լազերով՝ ֆունկցիոնալ նանոկառուցվածքային նյութերի վերահսկվող աճի համար։">Thin-film deposition using pulsed excimer-laser ablation for controlled growth of functional nanostructured materials.</p><div class="equipment-tags"><span>Thin Films</span><span>Excimer Laser</span></div></article>
+                <article class="equipment-card"><div class="equipment-icon">◌</div><h4>DC & RF Magnetron Sputtering</h4><p data-en="Physical vapor deposition platform for conductive, dielectric and multifunctional thin-film coatings." data-hy="Ֆիզիկական գոլորշու նստեցման համակարգ՝ հաղորդիչ, դիէլեկտրիկ և բազմաֆունկցիոնալ բարակ թաղանթների ստացման համար։">Physical vapor deposition platform for conductive, dielectric and multifunctional thin-film coatings.</p><div class="equipment-tags"><span>DC</span><span>RF</span><span>PVD</span></div></article>
+                <article class="equipment-card"><div class="equipment-icon">⌁</div><h4>Electron Beam Lithography (EBL)</h4><p data-en="High-resolution direct-write lithography for nanoscale patterns, devices and research structures." data-hy="Բարձր լուծաչափով ուղղակի գրանցման լիտոգրաֆիա՝ նանոմասշտաբային նախշերի, սարքերի և հետազոտական կառուցվածքների համար։">High-resolution direct-write lithography for nanoscale patterns, devices and research structures.</p><div class="equipment-tags"><span>Nanolithography</span><span>RAITH 180</span></div></article>
+                <article class="equipment-card"><div class="equipment-icon">▦</div><h4>Photolithography</h4><p data-en="Pattern transfer and microfabrication processes for device structures, contacts and experimental platforms." data-hy="Նախշերի փոխանցում և միկրոֆաբրիկացման գործընթացներ՝ սարքային կառուցվածքների, կոնտակտների և փորձարարական հարթակների համար։">Pattern transfer and microfabrication processes for device structures, contacts and experimental platforms.</p><div class="equipment-tags"><span>Microfabrication</span><span>Devices</span></div></article>
+                <article class="equipment-card"><div class="equipment-icon">◇</div><h4>CVD</h4><p data-en="Chemical vapor deposition for controlled growth of thin films and nanostructured materials." data-hy="Քիմիական գոլորշիների նստեցում՝ բարակ թաղանթների և նանոկառուցվածքային նյութերի վերահսկվող աճի համար։">Chemical vapor deposition for controlled growth of thin films and nanostructured materials.</p><div class="equipment-tags"><span>Growth</span><span>Thin Films</span></div></article>
+                <article class="equipment-card"><div class="equipment-icon">△</div><h4>PECVD</h4><p data-en="Plasma-enhanced chemical vapor deposition for low-temperature and process-controlled thin-film fabrication." data-hy="Պլազմայով ուժեղացված քիմիական գոլորշիների նստեցում՝ ցածր ջերմաստիճանային և վերահսկվող գործընթացների համար։">Plasma-enhanced chemical vapor deposition for low-temperature and process-controlled thin-film fabrication.</p><div class="equipment-tags"><span>PECVD</span><span>Plasma</span></div></article>
+            </div>
+        </div>
+
+        <div class="equipment-group">
+            <h3 class="equipment-group-title"><span class="eq-number">02</span><span data-en="Research & Experimental Equipment" data-hy="Հետազոտական և փորձարարական սարքեր">Research & Experimental Equipment</span></h3>
+            <div class="equipment-grid">
+                <article class="equipment-card"><div class="equipment-icon">⌁</div><h4>AFM — NT-MDT Nova</h4><p data-en="Atomic force microscopy for nanoscale surface morphology, topography and structural characterization." data-hy="Ատոմաուժային մանրադիտարկում՝ մակերևույթի նանոմասշտաբային մորֆոլոգիայի, տոպոգրաֆիայի և կառուցվածքի հետազոտման համար։">Atomic force microscopy for nanoscale surface morphology, topography and structural characterization.</p></article>
+                <article class="equipment-card"><div class="equipment-icon">◫</div><h4>Raman Spectroscopy</h4><p data-en="Vibrational spectroscopy for material identification, phase analysis and structural characterization." data-hy="Վիբրացիոն սպեկտրոսկոպիա՝ նյութերի նույնականացման, ֆազային վերլուծության և կառուցվածքային բնութագրման համար։">Vibrational spectroscopy for material identification, phase analysis and structural characterization.</p></article>
+                <article class="equipment-card"><div class="equipment-icon">Ω</div><h4>Zahner Zennium</h4><p data-en="Electrochemical measurement platform for impedance, conductivity and electrochemical characterization." data-hy="Էլեկտրաքիմիական չափումների հարթակ՝ իմպեդանսի, հաղորդականության և էլեկտրաքիմիական բնութագրերի ուսումնասիրման համար։">Electrochemical measurement platform for impedance, conductivity and electrochemical characterization.</p></article>
+                <article class="equipment-card"><div class="equipment-icon">▤</div><h4>Zygo NewView 7100</h4><p data-en="Optical profilometry for non-contact surface topography, step-height and thin-film measurements." data-hy="Օպտիկական պրոֆիլոմետրիա՝ մակերևույթի տոպոգրաֆիայի, աստիճանի բարձրության և բարակ թաղանթների չափումների համար։">Optical profilometry for non-contact surface topography, step-height and thin-film measurements.</p></article>
+                <article class="equipment-card"><div class="equipment-icon">◍</div><h4>Spectroscopic Ellipsometer</h4><p data-en="Optical characterization of thin-film thickness and optical properties through spectroscopic ellipsometry." data-hy="Բարակ թաղանթների հաստության և օպտիկական հատկությունների բնութագրում սպեկտրոսկոպիկ էլիպսոմետրիայի միջոցով։">Optical characterization of thin-film thickness and optical properties through spectroscopic ellipsometry.</p></article>
+                <article class="equipment-card"><div class="equipment-icon">⌘</div><h4>Wire Bonder</h4><p data-en="Electrical interconnection and bonding of fabricated devices for testing and experimental characterization." data-hy="Պատրաստված սարքերի էլեկտրական միացում և bonding՝ փորձարկման և փորձարարական բնութագրման համար։">Electrical interconnection and bonding of fabricated devices for testing and experimental characterization.</p></article>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="videos" id="videos">
     <div class="container">
         <div class="section-head">
@@ -731,12 +804,20 @@
 <section id="contact">
     <div class="container">
         <div class="section-head">
-            <div class="section-kicker">Contact</div>
-            <h2>Connect with the Center.</h2>
-            <p>
-                A research and training environment for nanoscience, thin films,
-                advanced technologies and interdisciplinary collaboration.
-            </p>
+            <div class="section-kicker" data-en="Contact" data-hy="Կապ">Contact</div>
+            <h2 data-en="Connect with the Center." data-hy="Կապ հաստատեք կենտրոնի հետ։">Connect with the Center.</h2>
+            <p data-en="For research collaboration, training and scientific cooperation, contact the Innovation Center for Nanoscience and Technology." data-hy="Հետազոտական համագործակցության, վերապատրաստման և գիտական գործընկերության համար կապ հաստատեք Նանոգիտության և տեխնոլոգիաների ինովացիոն կենտրոնի հետ։">For research collaboration, training and scientific cooperation, contact the Innovation Center for Nanoscience and Technology.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-item"><div class="contact-icon">⌖</div><div><strong data-en="Address" data-hy="Հասցե">Address</strong><span data-en="5/2 P. Sevak str., Yerevan, 0014, RA" data-hy="Պ. Սևակի փող. 5/2, Երևան, 0014, Հայաստանի Հանրապետություն">5/2 P. Sevak str., Yerevan, 0014, RA</span></div></div>
+                <div class="contact-item"><div class="contact-icon">@</div><div><strong data-en="Email" data-hy="Էլ. փոստ">Email</strong><a href="mailto:icnt@icnt-ichph.com">icnt@icnt-ichph.com</a></div></div>
+            </div>
+            <div class="contact-card contact-highlight">
+                <h3 data-en="Innovation Center for Nanoscience & Technology" data-hy="Նանոգիտության և տեխնոլոգիաների ինովացիոն կենտրոն">Innovation Center for Nanoscience & Technology</h3>
+                <p data-en="A research and technology platform of the A. B. Nalbandyan Institute of Chemical Physics, NAS RA." data-hy="ՀՀ ԳԱԱ Ա. Բ. Նալբանդյանի անվան Քիմիական ֆիզիկայի ինստիտուտի հետազոտական և տեխնոլոգիական հարթակ։">A research and technology platform of the A. B. Nalbandyan Institute of Chemical Physics, NAS RA.</p>
+                <div class="address"><strong data-en="Official contact" data-hy="Պաշտոնական կապ">Official contact</strong><br><span>icnt@icnt-ichph.com</span></div>
+            </div>
         </div>
     </div>
 </section>
@@ -750,7 +831,9 @@
                 <h3>ICNT</h3>
                 <p>
                     Innovation Center for Nanoscience and Technology<br>
-                    A. B. Nalbandyan Institute of Chemical Physics
+                    A. B. Nalbandyan Institute of Chemical Physics<br>
+                    <span>5/2 P. Sevak str., Yerevan, 0014, RA</span><br>
+                    <a href="mailto:icnt@icnt-ichph.com">icnt@icnt-ichph.com</a>
                 </p>
             </div>
             <div class="footer-right">
@@ -764,5 +847,20 @@
     </div>
 </footer>
 
+<script>
+(function () {
+    const buttons = document.querySelectorAll('.lang-btn');
+    const translatable = document.querySelectorAll('[data-en][data-hy]');
+    function setLanguage(lang) {
+        document.documentElement.lang = lang === 'hy' ? 'hy' : 'en';
+        translatable.forEach(el => { el.textContent = el.dataset[lang]; });
+        buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+        localStorage.setItem('icnt-language', lang);
+    }
+    buttons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+    const saved = localStorage.getItem('icnt-language');
+    setLanguage(saved === 'hy' ? 'hy' : 'en');
+})();
+</script>
 </body>
 </html>
