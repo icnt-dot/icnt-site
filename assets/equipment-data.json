@@ -1,0 +1,554 @@
+[
+  {
+    "id": "pld",
+    "group": "fabrication",
+    "acronym": "PLD",
+    "name": [
+      "Pulsed laser deposition",
+      "Իմպուլսային լազերային նստեցում"
+    ],
+    "model": "Pioneer 180",
+    "summary": [
+      "Controlled growth of functional thin films through pulsed excimer-laser ablation.",
+      "Ֆունկցիոնալ բարակ թաղանթների վերահսկվող աճ՝ իմպուլսային էքսիմեր լազերային աբլացիայի միջոցով։"
+    ],
+    "tags": [
+      [
+        "Thin films",
+        "Բարակ թաղանթներ"
+      ],
+      [
+        "Laser ablation",
+        "Լազերային աբլացիա"
+      ]
+    ],
+    "about": [
+      "The Pioneer 180 platform uses a pulsed excimer laser to ablate a target and deposit material on a substrate. It supports research on nanostructured coatings and multilayer thin-film systems.",
+      "Pioneer 180 համակարգը իմպուլսային էքսիմեր լազերով աբլացնում է թիրախը և նյութը նստեցնում ենթաշերտի վրա։ Այն կիրառվում է նանոկառուցվածքային ծածկույթների և բազմաշերտ բարակ թաղանթների հետազոտության համար։"
+    ],
+    "uses": [
+      [
+        "Functional thin-film growth",
+        "Ֆունկցիոնալ բարակ թաղանթների աճ"
+      ],
+      [
+        "Multilayer research structures",
+        "Բազմաշերտ հետազոտական կառուցվածքներ"
+      ],
+      [
+        "Deposition process development",
+        "Նստեցման գործընթացի մշակում"
+      ]
+    ],
+    "workflow": [
+      "Discuss your target material, substrate, layer sequence and characterization plan with the Center.",
+      "Կենտրոնի հետ քննարկեք թիրախի նյութը, ենթաշերտը, շերտերի հաջորդականությունը և բնութագրման պլանը։"
+    ]
+  },
+  {
+    "id": "sputtering",
+    "group": "fabrication",
+    "acronym": "DC / RF",
+    "name": [
+      "Magnetron sputtering",
+      "Մագնետրոնային փոշեցրում"
+    ],
+    "model": null,
+    "summary": [
+      "Physical vapor deposition for conductive, dielectric and multifunctional coatings.",
+      "Ֆիզիկական գոլորշային նստեցում՝ հաղորդիչ, դիէլեկտրիկ և բազմաֆունկցիոնալ ծածկույթների համար։"
+    ],
+    "tags": [
+      [
+        "PVD",
+        "PVD"
+      ],
+      [
+        "Coatings",
+        "Ծածկույթներ"
+      ]
+    ],
+    "about": [
+      "DC and RF magnetron sputtering provide complementary approaches to thin-film preparation. The platform enables research on conductive and dielectric coatings within the Center’s fabrication environment.",
+      "Հաստատուն հոսանքի (DC) և ռադիոհաճախական (RF) մագնետրոնային փոշեցրումը բարակ թաղանթների պատրաստման փոխլրացնող մեթոդներ են։ Համակարգը հնարավորություն է տալիս հետազոտել հաղորդիչ և դիէլեկտրիկ ծածկույթներ։"
+    ],
+    "uses": [
+      [
+        "Conductive coatings",
+        "Հաղորդիչ ծածկույթներ"
+      ],
+      [
+        "Dielectric thin films",
+        "Դիէլեկտրիկ բարակ թաղանթներ"
+      ],
+      [
+        "Multifunctional material systems",
+        "Բազմաֆունկցիոնալ նյութական համակարգեր"
+      ]
+    ],
+    "workflow": [
+      "Share your target composition, substrate and intended coating function to discuss a suitable process.",
+      "Ներկայացրեք թիրախի բաղադրությունը, ենթաշերտը և ծածկույթի գործառույթը՝ համապատասխան գործընթացը քննարկելու համար։"
+    ]
+  },
+  {
+    "id": "ebl",
+    "group": "fabrication",
+    "acronym": "EBL",
+    "name": [
+      "Electron beam lithography",
+      "Էլեկտրոնաճառագայթային լիտոգրաֆիա"
+    ],
+    "model": "RAITH 180",
+    "summary": [
+      "Direct-write lithography for nanoscale patterns, devices and experimental structures.",
+      "Ուղղակի գրանցման լիտոգրաֆիա՝ նանոմասշտաբային նախշերի, սարքերի և փորձարարական կառուցվածքների համար։"
+    ],
+    "tags": [
+      [
+        "Nanopatterning",
+        "Նանոնախշավորում"
+      ],
+      [
+        "Direct write",
+        "Ուղղակի գրանցում"
+      ]
+    ],
+    "about": [
+      "The RAITH 180 system uses an electron beam to write patterns in a suitable resist. It connects nanoscale design with subsequent fabrication steps such as deposition and pattern transfer.",
+      "RAITH 180 համակարգը էլեկտրոնային փնջով նախշեր է գրանցում համապատասխան ռեզիստում։ Այն կապում է նանոմասշտաբային նախագծումը հաջորդող նստեցման և նախշերի փոխանցման փուլերի հետ։"
+    ],
+    "uses": [
+      [
+        "Nanoscale research patterns",
+        "Նանոմասշտաբային հետազոտական նախշեր"
+      ],
+      [
+        "Device structure development",
+        "Սարքային կառուցվածքների մշակում"
+      ],
+      [
+        "Lithography process studies",
+        "Լիտոգրաֆիական գործընթացների ուսումնասիրություն"
+      ]
+    ],
+    "workflow": [
+      "Prepare your layout, substrate information and intended feature dimensions for a process discussion.",
+      "Գործընթացը քննարկելու համար պատրաստեք գծագիրը, ենթաշերտի տվյալները և նախատեսվող տարրերի չափերը։"
+    ]
+  },
+  {
+    "id": "photolithography",
+    "group": "fabrication",
+    "acronym": "UV",
+    "name": [
+      "Photolithography",
+      "Ֆոտոլիտոգրաֆիա"
+    ],
+    "model": null,
+    "summary": [
+      "Optical pattern transfer for microstructures, electrical contacts and device platforms.",
+      "Օպտիկական նախշափոխանցում՝ միկրոկառուցվածքների, էլեկտրական կոնտակտների և սարքային հարթակների համար։"
+    ],
+    "tags": [
+      [
+        "Microfabrication",
+        "Միկրոֆաբրիկացում"
+      ],
+      [
+        "Pattern transfer",
+        "Նախշերի փոխանցում"
+      ]
+    ],
+    "about": [
+      "Photolithography transfers optical patterns into a photoresist layer. It supports microfabrication workflows for experimental devices and complements the Center’s deposition capabilities.",
+      "Ֆոտոլիտոգրաֆիան օպտիկական նախշերը փոխանցում է ֆոտոռեզիստի շերտի մեջ։ Այն կիրառվում է փորձարարական սարքերի միկրոֆաբրիկացման համար և լրացնում կենտրոնի նստեցման հնարավորությունները։"
+    ],
+    "uses": [
+      [
+        "Microstructure patterning",
+        "Միկրոկառուցվածքների նախշավորում"
+      ],
+      [
+        "Electrical contact definition",
+        "Էլեկտրական կոնտակտների ձևավորում"
+      ],
+      [
+        "Device fabrication workflows",
+        "Սարքերի պատրաստման գործընթացներ"
+      ]
+    ],
+    "workflow": [
+      "Discuss mask design, resist compatibility and the steps needed after patterning.",
+      "Քննարկեք դիմակի նախագիծը, ռեզիստի համատեղելիությունը և նախշավորմանը հաջորդող քայլերը։"
+    ]
+  },
+  {
+    "id": "cvd",
+    "group": "fabrication",
+    "acronym": "CVD",
+    "name": [
+      "Chemical vapor deposition",
+      "Քիմիական գոլորշային նստեցում"
+    ],
+    "model": null,
+    "summary": [
+      "Controlled material growth from vapor-phase precursors for thin-film research.",
+      "Նյութերի վերահսկվող աճ գոլորշային նախանյութերից՝ բարակ թաղանթների հետազոտության համար։"
+    ],
+    "tags": [
+      [
+        "Material growth",
+        "Նյութերի աճ"
+      ],
+      [
+        "Thin films",
+        "Բարակ թաղանթներ"
+      ]
+    ],
+    "about": [
+      "Chemical vapor deposition forms materials through reactions involving vapor-phase precursors at a substrate. The Center’s CVD capability supports thin-film and nanostructured material research.",
+      "Քիմիական գոլորշային նստեցման ընթացքում նյութերը ձևավորվում են ենթաշերտի վրա գոլորշային նախանյութերի մասնակցությամբ ռեակցիաների միջոցով։ Կենտրոնի CVD հնարավորությունը կիրառվում է բարակ թաղանթների և նանոկառուցվածքային նյութերի հետազոտության մեջ։"
+    ],
+    "uses": [
+      [
+        "Thin-film growth studies",
+        "Բարակ թաղանթների աճի ուսումնասիրություն"
+      ],
+      [
+        "Nanostructured materials",
+        "Նանոկառուցվածքային նյութեր"
+      ],
+      [
+        "Growth process development",
+        "Աճի գործընթացի մշակում"
+      ]
+    ],
+    "workflow": [
+      "Confirm precursor compatibility, substrate requirements and process conditions with the Center.",
+      "Կենտրոնի հետ ճշտեք նախանյութերի համատեղելիությունը, ենթաշերտի պահանջները և գործընթացի պայմանները։"
+    ]
+  },
+  {
+    "id": "pecvd",
+    "group": "fabrication",
+    "acronym": "PECVD",
+    "name": [
+      "Plasma-enhanced CVD",
+      "Պլազմայով ուժեղացված CVD"
+    ],
+    "model": null,
+    "summary": [
+      "Plasma-assisted thin-film fabrication with control over the deposition process.",
+      "Պլազմայի մասնակցությամբ բարակ թաղանթների պատրաստում՝ նստեցման գործընթացի վերահսկմամբ։"
+    ],
+    "tags": [
+      [
+        "Plasma",
+        "Պլազմա"
+      ],
+      [
+        "Deposition",
+        "Նստեցում"
+      ]
+    ],
+    "about": [
+      "Plasma-enhanced chemical vapor deposition uses plasma to assist chemical reactions during film growth. It extends the Center’s thin-film preparation methods for process-controlled materials research.",
+      "Պլազմայով ուժեղացված քիմիական գոլորշային նստեցման ժամանակ պլազման նպաստում է թաղանթի աճի քիմիական ռեակցիաներին։ Այն ընդլայնում է կենտրոնի բարակ թաղանթների պատրաստման մեթոդները։"
+    ],
+    "uses": [
+      [
+        "Plasma-assisted film growth",
+        "Պլազմայով օժանդակված թաղանթների աճ"
+      ],
+      [
+        "Deposition process studies",
+        "Նստեցման գործընթացի ուսումնասիրություն"
+      ],
+      [
+        "Functional coating research",
+        "Ֆունկցիոնալ ծածկույթների հետազոտություն"
+      ]
+    ],
+    "workflow": [
+      "Discuss the film composition, substrate temperature constraints and intended application.",
+      "Քննարկեք թաղանթի բաղադրությունը, ենթաշերտի ջերմաստիճանային սահմանափակումները և կիրառությունը։"
+    ]
+  },
+  {
+    "id": "wire-bonder",
+    "group": "fabrication",
+    "acronym": "WB",
+    "name": [
+      "Wire bonder",
+      "Մետաղալարային միակցման սարք"
+    ],
+    "model": null,
+    "summary": [
+      "Electrical interconnection of fabricated devices for subsequent testing and measurement.",
+      "Պատրաստված սարքերի էլեկտրական միացում՝ հետագա փորձարկման և չափումների համար։"
+    ],
+    "tags": [
+      [
+        "Interconnection",
+        "Էլեկտրական միացում"
+      ],
+      [
+        "Devices",
+        "Սարքեր"
+      ]
+    ],
+    "about": [
+      "Wire bonding connects device contact pads to external connections. This fabrication step helps prepare research devices for electrical testing and experimental characterization.",
+      "Մետաղալարային միակցումը սարքի կոնտակտային հարթակները կապում է արտաքին միացումներին։ Պատրաստման այս փուլը հետազոտական սարքերը նախապատրաստում է էլեկտրական փորձարկումների և բնութագրման։"
+    ],
+    "uses": [
+      [
+        "Device contact interconnection",
+        "Սարքի կոնտակտների միացում"
+      ],
+      [
+        "Preparation for electrical testing",
+        "Էլեկտրական փորձարկման նախապատրաստում"
+      ],
+      [
+        "Experimental device assembly",
+        "Փորձարարական սարքերի հավաքում"
+      ]
+    ],
+    "workflow": [
+      "Share device geometry, contact-pad material and connection requirements before preparing a sample.",
+      "Նմուշը պատրաստելուց առաջ ներկայացրեք սարքի երկրաչափությունը, կոնտակտների նյութը և միացման պահանջները։"
+    ]
+  },
+  {
+    "id": "afm",
+    "group": "characterization",
+    "acronym": "AFM",
+    "name": [
+      "Atomic force microscopy",
+      "Ատոմաուժային մանրադիտարկում"
+    ],
+    "model": "HORIBA OmegaScope",
+    "summary": [
+      "Nanoscale surface morphology and topography for thin films and material structures.",
+      "Բարակ թաղանթների և նյութական կառուցվածքների մակերևույթի նանոմասշտաբային մորֆոլոգիա և տոպոգրաֆիա։"
+    ],
+    "tags": [
+      [
+        "Surface",
+        "Մակերևույթ"
+      ],
+      [
+        "Topography",
+        "Տոպոգրաֆիա"
+      ]
+    ],
+    "about": [
+      "The HORIBA OmegaScope atomic force microscope probes a surface with a fine tip to study local topography. It supports the investigation of nanoscale morphology in thin films and other material surfaces.",
+      "HORIBA OmegaScope ատոմաուժային մանրադիտակը նուրբ զոնդով հետազոտում է մակերևույթը՝ տեղային տոպոգրաֆիան ուսումնասիրելու համար։ Այն կիրառվում է բարակ թաղանթների և այլ նյութերի նանոմասշտաբային մորֆոլոգիայի հետազոտության մեջ։"
+    ],
+    "uses": [
+      [
+        "Surface morphology",
+        "Մակերևույթի մորֆոլոգիա"
+      ],
+      [
+        "Nanoscale topography",
+        "Նանոմասշտաբային տոպոգրաֆիա"
+      ],
+      [
+        "Thin-film surface analysis",
+        "Բարակ թաղանթների մակերևույթի վերլուծություն"
+      ]
+    ],
+    "workflow": [
+      "Discuss sample dimensions, surface condition and the length scale of the features of interest.",
+      "Քննարկեք նմուշի չափերը, մակերևույթի վիճակը և հետաքրքրող տարրերի բնութագրական չափերը։"
+    ]
+  },
+  {
+    "id": "raman",
+    "group": "characterization",
+    "acronym": "Raman",
+    "name": [
+      "Raman spectroscopy",
+      "Ռամանյան սպեկտրոսկոպիա"
+    ],
+    "model": null,
+    "summary": [
+      "Vibrational spectroscopy for material identification, phase and structural analysis.",
+      "Տատանողական սպեկտրոսկոպիա՝ նյութերի նույնականացման, ֆազային և կառուցվածքային վերլուծության համար։"
+    ],
+    "tags": [
+      [
+        "Spectroscopy",
+        "Սպեկտրոսկոպիա"
+      ],
+      [
+        "Structure",
+        "Կառուցվածք"
+      ]
+    ],
+    "about": [
+      "Raman spectroscopy investigates the vibrational response of a material through inelastic light scattering. Spectral features can help identify materials and explore phase and structural differences.",
+      "Ռամանյան սպեկտրոսկոպիան լույսի ոչ առաձգական ցրման միջոցով հետազոտում է նյութի տատանողական արձագանքը։ Սպեկտրային առանձնահատկություններն օգնում են նույնականացնել նյութերը և ուսումնասիրել ֆազային ու կառուցվածքային տարբերությունները։"
+    ],
+    "uses": [
+      [
+        "Material identification",
+        "Նյութերի նույնականացում"
+      ],
+      [
+        "Phase analysis",
+        "Ֆազային վերլուծություն"
+      ],
+      [
+        "Structural characterization",
+        "Կառուցվածքային բնութագրում"
+      ]
+    ],
+    "workflow": [
+      "Provide the material composition, substrate and any known sensitivity to laser illumination.",
+      "Ներկայացրեք նյութի բաղադրությունը, ենթաշերտը և լազերային լուսավորման նկատմամբ հայտնի զգայունությունը։"
+    ]
+  },
+  {
+    "id": "electrochemistry",
+    "group": "characterization",
+    "acronym": "EIS",
+    "name": [
+      "Electrochemical analysis",
+      "Էլեկտրաքիմիական վերլուծություն"
+    ],
+    "model": "Zahner Zennium Pro",
+    "summary": [
+      "Impedance and electrochemical measurements for materials and experimental systems.",
+      "Իմպեդանսի և էլեկտրաքիմիական չափումներ՝ նյութերի և փորձարարական համակարգերի համար։"
+    ],
+    "tags": [
+      [
+        "Impedance",
+        "Իմպեդանս"
+      ],
+      [
+        "Electrochemistry",
+        "Էլեկտրաքիմիա"
+      ]
+    ],
+    "about": [
+      "The Zahner Zennium Pro platform supports electrochemical measurements, including impedance characterization. It helps investigate the response of materials and electrochemical systems.",
+      "Zahner Zennium Pro համակարգը նախատեսված է էլեկտրաքիմիական չափումների, այդ թվում՝ իմպեդանսային բնութագրման համար։ Այն օգնում է ուսումնասիրել նյութերի և էլեկտրաքիմիական համակարգերի արձագանքը։"
+    ],
+    "uses": [
+      [
+        "Electrochemical impedance",
+        "Էլեկտրաքիմիական իմպեդանս"
+      ],
+      [
+        "Conductivity investigation",
+        "Հաղորդականության ուսումնասիրություն"
+      ],
+      [
+        "Electrochemical behavior",
+        "Էլեկտրաքիմիական վարք"
+      ]
+    ],
+    "workflow": [
+      "Discuss electrode configuration, electrolyte and the measurement question with the Center.",
+      "Կենտրոնի հետ քննարկեք էլեկտրոդների դասավորությունը, էլեկտրոլիտը և չափման խնդիրը։"
+    ]
+  },
+  {
+    "id": "profilometry",
+    "group": "characterization",
+    "acronym": "3D",
+    "name": [
+      "Optical profilometry",
+      "Օպտիկական պրոֆիլոմետրիա"
+    ],
+    "model": "Zygo NewView 7100",
+    "summary": [
+      "Non-contact surface topography, step-height and thin-film measurements.",
+      "Մակերևույթի տոպոգրաֆիայի, աստիճանի բարձրության և բարակ թաղանթների անկոնտակտ չափումներ։"
+    ],
+    "tags": [
+      [
+        "Non-contact",
+        "Անկոնտակտ"
+      ],
+      [
+        "Step height",
+        "Աստիճանի բարձրություն"
+      ]
+    ],
+    "about": [
+      "The Zygo NewView 7100 uses optical profilometry to study surface topography without mechanical contact. Step-height measurements can support film-thickness evaluation when an appropriate reference step is available.",
+      "Zygo NewView 7100 սարքը օպտիկական պրոֆիլոմետրիայի միջոցով հետազոտում է մակերևույթի տոպոգրաֆիան՝ առանց մեխանիկական հպման։ Համապատասխան հենակետային աստիճանի առկայության դեպքում աստիճանի բարձրության չափումն օգնում է գնահատել թաղանթի հաստությունը։"
+    ],
+    "uses": [
+      [
+        "Surface topography",
+        "Մակերևույթի տոպոգրաֆիա"
+      ],
+      [
+        "Step-height measurement",
+        "Աստիճանի բարձրության չափում"
+      ],
+      [
+        "Thin-film thickness evaluation",
+        "Բարակ թաղանթի հաստության գնահատում"
+      ]
+    ],
+    "workflow": [
+      "Describe your surface, expected height range and the availability of a reference step.",
+      "Նկարագրեք մակերևույթը, բարձրության սպասվող միջակայքը և հենակետային աստիճանի առկայությունը։"
+    ]
+  },
+  {
+    "id": "dls",
+    "group": "characterization",
+    "acronym": "DLS",
+    "name": [
+      "Dynamic light scattering",
+      "Լույսի դինամիկ ցրում"
+    ],
+    "model": "Litesizer DLS",
+    "summary": [
+      "Particle-size characterization in dispersions using dynamic light scattering.",
+      "Դիսպերսիաներում մասնիկների չափերի բնութագրում՝ լույսի դինամիկ ցրման միջոցով։"
+    ],
+    "tags": [
+      [
+        "Particles",
+        "Մասնիկներ"
+      ],
+      [
+        "Dispersions",
+        "Դիսպերսիաներ"
+      ]
+    ],
+    "about": [
+      "Litesizer DLS measures fluctuations in scattered light to characterize particles in a dispersion. The technique supports research on particle size and the behavior of dispersed material systems.",
+      "Litesizer DLS սարքը չափում է ցրված լույսի տատանումները՝ դիսպերսիայում մասնիկները բնութագրելու համար։ Մեթոդը կիրառվում է մասնիկների չափերի և դիսպերս նյութական համակարգերի վարքի հետազոտության մեջ։"
+    ],
+    "uses": [
+      [
+        "Particle-size characterization",
+        "Մասնիկների չափերի բնութագրում"
+      ],
+      [
+        "Dispersion studies",
+        "Դիսպերսիաների ուսումնասիրություն"
+      ],
+      [
+        "Colloidal material research",
+        "Կոլոիդային նյութերի հետազոտություն"
+      ]
+    ],
+    "workflow": [
+      "Discuss the dispersion medium, concentration and sample preparation before measurement.",
+      "Չափումից առաջ քննարկեք դիսպերս միջավայրը, կոնցենտրացիան և նմուշի նախապատրաստումը։"
+    ]
+  }
+]
