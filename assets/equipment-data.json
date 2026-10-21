@@ -43,7 +43,8 @@
     "workflow": [
       "Discuss your target material, substrate, layer sequence and characterization plan with the Center.",
       "Կենտրոնի հետ քննարկեք թիրախի նյութը, ենթաշերտը, շերտերի հաջորդականությունը և բնութագրման պլանը։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "sputtering",
@@ -89,7 +90,8 @@
     "workflow": [
       "Share your target composition, substrate and intended coating function to discuss a suitable process.",
       "Ներկայացրեք թիրախի բաղադրությունը, ենթաշերտը և ծածկույթի գործառույթը՝ համապատասխան գործընթացը քննարկելու համար։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "ebl",
@@ -135,7 +137,8 @@
     "workflow": [
       "Prepare your layout, substrate information and intended feature dimensions for a process discussion.",
       "Գործընթացը քննարկելու համար պատրաստեք գծագիրը, ենթաշերտի տվյալները և նախատեսվող տարրերի չափերը։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "photolithography",
@@ -181,7 +184,8 @@
     "workflow": [
       "Discuss mask design, resist compatibility and the steps needed after patterning.",
       "Քննարկեք դիմակի նախագիծը, ռեզիստի համատեղելիությունը և նախշավորմանը հաջորդող քայլերը։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "cvd",
@@ -191,7 +195,7 @@
       "Chemical vapor deposition",
       "Քիմիական գոլորշային նստեցում"
     ],
-    "model": null,
+    "model": "YKY CVD",
     "summary": [
       "Controlled material growth from vapor-phase precursors for thin-film research.",
       "Նյութերի վերահսկվող աճ գոլորշային նախանյութերից՝ բարակ թաղանթների հետազոտության համար։"
@@ -227,7 +231,8 @@
     "workflow": [
       "Confirm precursor compatibility, substrate requirements and process conditions with the Center.",
       "Կենտրոնի հետ ճշտեք նախանյութերի համատեղելիությունը, ենթաշերտի պահանջները և գործընթացի պայմանները։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "pecvd",
@@ -273,7 +278,8 @@
     "workflow": [
       "Discuss the film composition, substrate temperature constraints and intended application.",
       "Քննարկեք թաղանթի բաղադրությունը, ենթաշերտի ջերմաստիճանային սահմանափակումները և կիրառությունը։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "wire-bonder",
@@ -319,7 +325,8 @@
     "workflow": [
       "Share device geometry, contact-pad material and connection requirements before preparing a sample.",
       "Նմուշը պատրաստելուց առաջ ներկայացրեք սարքի երկրաչափությունը, կոնտակտների նյութը և միացման պահանջները։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "afm",
@@ -365,7 +372,8 @@
     "workflow": [
       "Discuss sample dimensions, surface condition and the length scale of the features of interest.",
       "Քննարկեք նմուշի չափերը, մակերևույթի վիճակը և հետաքրքրող տարրերի բնութագրական չափերը։"
-    ]
+    ],
+    "bookable": true
   },
   {
     "id": "raman",
@@ -411,7 +419,8 @@
     "workflow": [
       "Provide the material composition, substrate and any known sensitivity to laser illumination.",
       "Ներկայացրեք նյութի բաղադրությունը, ենթաշերտը և լազերային լուսավորման նկատմամբ հայտնի զգայունությունը։"
-    ]
+    ],
+    "bookable": true
   },
   {
     "id": "electrochemistry",
@@ -457,7 +466,8 @@
     "workflow": [
       "Discuss electrode configuration, electrolyte and the measurement question with the Center.",
       "Կենտրոնի հետ քննարկեք էլեկտրոդների դասավորությունը, էլեկտրոլիտը և չափման խնդիրը։"
-    ]
+    ],
+    "bookable": true
   },
   {
     "id": "profilometry",
@@ -503,7 +513,8 @@
     "workflow": [
       "Describe your surface, expected height range and the availability of a reference step.",
       "Նկարագրեք մակերևույթը, բարձրության սպասվող միջակայքը և հենակետային աստիճանի առկայությունը։"
-    ]
+    ],
+    "bookable": false
   },
   {
     "id": "dls",
@@ -549,6 +560,900 @@
     "workflow": [
       "Discuss the dispersion medium, concentration and sample preparation before measurement.",
       "Չափումից առաջ քննարկեք դիսպերս միջավայրը, կոնցենտրացիան և նմուշի նախապատրաստումը։"
-    ]
+    ],
+    "bookable": true
+  },
+  {
+    "id": "uv-vis",
+    "group": "characterization",
+    "acronym": "UV–Vis",
+    "model": "УФ-6700",
+    "name": [
+      "UV–Vis spectrophotometry",
+      "UV–Vis սպեկտրոֆոտոմետրիա"
+    ],
+    "summary": [
+      "Optical absorption and transmission measurements for materials and solution studies.",
+      "Օպտիկական կլանման և թափանցման չափումներ՝ նյութերի և լուծույթների հետազոտության համար։"
+    ],
+    "about": [
+      "The УФ-6700 spectrophotometer records the optical response of a sample across ultraviolet and visible wavelengths. Suitable holders and reference samples are selected for each measurement.",
+      "УФ-6700 սպեկտրոֆոտոմետրը գրանցում է նմուշի օպտիկական արձագանքը ուլտրամանուշակագույն և տեսանելի տիրույթներում։ Յուրաքանչյուր չափման համար ընտրվում են համապատասխան պահիչներ և հենակետային նմուշներ։"
+    ],
+    "uses": [
+      [
+        "Optical transmission",
+        "Օպտիկական թափանցում"
+      ],
+      [
+        "Absorption spectra",
+        "Կլանման սպեկտրներ"
+      ],
+      [
+        "Thin-film and solution studies",
+        "Թաղանթների և լուծույթների ուսումնասիրություն"
+      ]
+    ],
+    "workflow": [
+      "Describe the sample form, substrate or solvent and the optical measurement you need.",
+      "Ներկայացրեք նմուշի տեսակը, ենթաշերտը կամ լուծիչը և անհրաժեշտ օպտիկական չափումը։"
+    ],
+    "tags": [
+      [
+        "Optical transmission",
+        "Օպտիկական թափանցում"
+      ],
+      [
+        "Absorption spectra",
+        "Կլանման սպեկտրներ"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "four-point-probe",
+    "group": "characterization",
+    "acronym": "4PP",
+    "model": "Ossila Four-Point Probe",
+    "name": [
+      "Four-point probe measurements",
+      "Քառազոնդ էլեկտրական չափումներ"
+    ],
+    "summary": [
+      "Sheet-resistance characterization of conductive films using four electrical contacts.",
+      "Հաղորդիչ թաղանթների շերտային դիմադրության բնութագրում՝ չորս էլեկտրական կոնտակտով։"
+    ],
+    "about": [
+      "The Ossila Four-Point Probe separates current injection from voltage sensing to measure sheet resistance. Sample dimensions, film continuity and contact suitability are reviewed before measurement.",
+      "Ossila Four-Point Probe սարքը տարանջատում է հոսանքի հաղորդումն ու լարման չափումը՝ շերտային դիմադրությունը որոշելու համար։ Չափումից առաջ քննարկվում են նմուշի չափերը, թաղանթի անընդհատությունը և կոնտակտավորման պայմանները։"
+    ],
+    "uses": [
+      [
+        "Sheet resistance",
+        "Շերտային դիմադրություն"
+      ],
+      [
+        "Conductive thin films",
+        "Հաղորդիչ բարակ թաղանթներ"
+      ],
+      [
+        "Process comparisons",
+        "Գործընթացների համեմատություն"
+      ]
+    ],
+    "workflow": [
+      "Share the film material, substrate, dimensions and expected resistance range.",
+      "Ներկայացրեք թաղանթի նյութը, ենթաշերտը, չափերը և դիմադրության սպասվող միջակայքը։"
+    ],
+    "tags": [
+      [
+        "Sheet resistance",
+        "Շերտային դիմադրություն"
+      ],
+      [
+        "Conductive thin films",
+        "Հաղորդիչ բարակ թաղանթներ"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "electrical-characterization",
+    "group": "characterization",
+    "acronym": "I–V",
+    "model": "Ossila Electrical Characterization System",
+    "name": [
+      "Electrical characterization",
+      "Էլեկտրական բնութագրում"
+    ],
+    "summary": [
+      "A probe station and measurement system for contacting research devices and studying electrical response.",
+      "Զոնդային կայան և չափման համակարգ՝ հետազոտական սարքերի կոնտակտավորման ու էլեկտրական արձագանքի ուսումնասիրության համար։"
+    ],
+    "about": [
+      "The Ossila system combines controlled probe positioning with electrical measurement equipment. It supports contacting pads and comparing device responses under an agreed measurement protocol.",
+      "Ossila համակարգը միավորում է զոնդերի դիրքի կառավարումն ու էլեկտրական չափման սարքավորումները։ Այն հնարավորություն է տալիս կոնտակտավորել հարթակները և համեմատել սարքերի արձագանքը՝ համաձայնեցված չափման ընթացակարգով։"
+    ],
+    "uses": [
+      [
+        "Device probing",
+        "Սարքերի զոնդային կոնտակտավորում"
+      ],
+      [
+        "Current–voltage measurements",
+        "Վոլտամպերային չափումներ"
+      ],
+      [
+        "Contact studies",
+        "Կոնտակտների ուսումնասիրություն"
+      ]
+    ],
+    "workflow": [
+      "Provide the contact layout, sample dimensions and allowed current and voltage limits.",
+      "Ներկայացրեք կոնտակտների գծագիրը, նմուշի չափերը և հոսանքի ու լարման թույլատրելի սահմանները։"
+    ],
+    "tags": [
+      [
+        "Device probing",
+        "Սարքերի զոնդային կոնտակտավորում"
+      ],
+      [
+        "Current–voltage measurements",
+        "Վոլտամպերային չափումներ"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "uv-ozone",
+    "group": "preparation",
+    "acronym": "UV / O₃",
+    "model": "Novascan UV Ozone Cleaner",
+    "name": [
+      "UV–ozone surface cleaning",
+      "Մակերևույթի UV–օզոնային մաքրում"
+    ],
+    "summary": [
+      "Surface cleaning and activation before coating, bonding or other sample-processing steps.",
+      "Մակերևույթի մաքրում և ակտիվացում՝ ծածկույթ ստանալուց, միակցումից կամ այլ մշակման փուլերից առաջ։"
+    ],
+    "about": [
+      "UV–ozone treatment is used to remove organic surface contamination and modify surface wettability. Treatment time and material compatibility are chosen for the sample and its next processing step.",
+      "UV–օզոնային մշակումը կիրառվում է մակերևույթի օրգանական աղտոտվածությունը հեռացնելու և թրջելիությունը փոփոխելու համար։ Մշակման ժամանակն ու նյութի համատեղելիությունն ընտրվում են նմուշի և հաջորդ գործընթացի համար։"
+    ],
+    "uses": [
+      [
+        "Surface preparation",
+        "Մակերևույթի նախապատրաստում"
+      ],
+      [
+        "Surface activation",
+        "Մակերևույթի ակտիվացում"
+      ],
+      [
+        "Coating preparation",
+        "Ծածկույթի ստացման նախապատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Confirm the substrate, any existing coatings and the purpose of surface treatment.",
+      "Ճշտեք ենթաշերտը, առկա ծածկույթները և մակերևութային մշակման նպատակը։"
+    ],
+    "tags": [
+      [
+        "Surface preparation",
+        "Մակերևույթի նախապատրաստում"
+      ],
+      [
+        "Surface activation",
+        "Մակերևույթի ակտիվացում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "muffle-furnace",
+    "group": "preparation",
+    "acronym": "HEAT",
+    "model": null,
+    "name": [
+      "High-temperature muffle furnace",
+      "Բարձր ջերմաստիճանային մուֆելային վառարան"
+    ],
+    "summary": [
+      "Controlled thermal treatment for suitable research samples and materials.",
+      "Կառավարվող ջերմամշակում՝ համապատասխան հետազոտական նմուշների և նյութերի համար։"
+    ],
+    "about": [
+      "The muffle furnace provides an enclosed heated chamber for thermal processing. The sample container, heating profile and cooling procedure are agreed with the Center before use.",
+      "Մուֆելային վառարանն ունի փակ տաքացվող խցիկ՝ ջերմամշակման համար։ Նմուշի տարան, տաքացման ծրագիրը և սառեցման ընթացքը նախապես համաձայնեցվում են կենտրոնի հետ։"
+    ],
+    "uses": [
+      [
+        "Thermal treatment",
+        "Ջերմամշակում"
+      ],
+      [
+        "Material preparation",
+        "Նյութերի պատրաստում"
+      ],
+      [
+        "Annealing studies",
+        "Թրծման ուսումնասիրություն"
+      ]
+    ],
+    "workflow": [
+      "Specify sample composition, requested temperature, holding time and container material.",
+      "Նշեք նմուշի բաղադրությունը, անհրաժեշտ ջերմաստիճանը, պահման ժամանակը և տարայի նյութը։"
+    ],
+    "tags": [
+      [
+        "Thermal treatment",
+        "Ջերմամշակում"
+      ],
+      [
+        "Material preparation",
+        "Նյութերի պատրաստում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "freeze-dryer",
+    "group": "preparation",
+    "acronym": "LYO",
+    "model": "LABOAO Benchtop Manifold Freeze Dryer",
+    "name": [
+      "Freeze dryer",
+      "Սառեցմամբ չորացման սարք"
+    ],
+    "summary": [
+      "Freeze-drying for sample preparation through freezing and reduced-pressure sublimation.",
+      "Նմուշների պատրաստում սառեցմամբ և նվազեցված ճնշման պայմաններում սուբլիմացմամբ չորացման միջոցով։"
+    ],
+    "about": [
+      "The benchtop manifold freeze dryer removes frozen solvent by sublimation under reduced pressure. Sample composition, freezing conditions and container compatibility are reviewed before a run.",
+      "Սեղանադիր մանիֆոլդային լիոֆիլացնող սարքը նվազեցված ճնշման պայմաններում սուբլիմացմամբ հեռացնում է սառեցված լուծիչը։ Գործարկումից առաջ ճշտվում են նմուշի բաղադրությունը, սառեցման պայմանները և տարայի համատեղելիությունը։"
+    ],
+    "uses": [
+      [
+        "Freeze-drying",
+        "Լիոֆիլացում"
+      ],
+      [
+        "Sample preservation studies",
+        "Նմուշների պահպանման ուսումնասիրություն"
+      ],
+      [
+        "Dry sample preparation",
+        "Չոր նմուշների պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Describe the solvent, sample volume, container and intended drying outcome.",
+      "Ներկայացրեք լուծիչը, նմուշի ծավալը, տարան և չորացման ակնկալվող արդյունքը։"
+    ],
+    "tags": [
+      [
+        "Freeze-drying",
+        "Լիոֆիլացում"
+      ],
+      [
+        "Sample preservation studies",
+        "Նմուշների պահպանման ուսումնասիրություն"
+      ]
+    ],
+    "bookable": true
+  },
+  {
+    "id": "3d-printing",
+    "group": "fabrication",
+    "acronym": "3D",
+    "model": "Creality K1C",
+    "name": [
+      "3D printing & prototyping",
+      "3D տպագրություն և նախատիպավորում"
+    ],
+    "summary": [
+      "Fabrication of polymer prototypes, sample holders and experimental fixtures.",
+      "Պոլիմերային նախատիպերի, նմուշապահիչների և փորձարարական հարմարանքների պատրաստում։"
+    ],
+    "about": [
+      "The Creality K1C builds polymer parts layer by layer from a digital model. It supports laboratory prototyping and fixture development, with material and dimensional requirements reviewed before printing.",
+      "Creality K1C սարքը թվային մոդելից շերտ առ շերտ պատրաստում է պոլիմերային դետալներ։ Այն կիրառվում է լաբորատոր նախատիպերի և հարմարանքների մշակման համար՝ նյութն ու չափային պահանջները նախապես ճշտելով։"
+    ],
+    "uses": [
+      [
+        "Prototype parts",
+        "Նախատիպային դետալներ"
+      ],
+      [
+        "Sample holders",
+        "Նմուշապահիչներ"
+      ],
+      [
+        "Experimental fixtures",
+        "Փորձարարական հարմարանքներ"
+      ]
+    ],
+    "workflow": [
+      "Prepare a 3D model and describe dimensions, tolerances and operating conditions for the part.",
+      "Պատրաստեք 3D մոդելը և ներկայացրեք դետալի չափերը, թույլտվածքներն ու աշխատանքային պայմանները։"
+    ],
+    "tags": [
+      [
+        "Prototype parts",
+        "Նախատիպային դետալներ"
+      ],
+      [
+        "Sample holders",
+        "Նմուշապահիչներ"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "vacuum-drying",
+    "group": "preparation",
+    "acronym": "VAC",
+    "model": "FAITHFUL DZ-BCII",
+    "name": [
+      "Vacuum drying oven",
+      "Վակուումային չորացման պահարան"
+    ],
+    "summary": [
+      "Drying and thermal conditioning of suitable samples under reduced pressure.",
+      "Համապատասխան նմուշների չորացում և ջերմային մշակում՝ նվազեցված ճնշման պայմաններում։"
+    ],
+    "about": [
+      "The vacuum drying oven combines a heated chamber with reduced pressure. A suitable temperature, pressure and drying procedure are selected according to the sample and residual solvent.",
+      "Վակուումային չորացման պահարանը միավորում է տաքացվող խցիկն ու նվազեցված ճնշումը։ Ջերմաստիճանը, ճնշումն ու չորացման ընթացակարգն ընտրվում են ըստ նմուշի և մնացորդային լուծիչի։"
+    ],
+    "uses": [
+      [
+        "Vacuum drying",
+        "Վակուումային չորացում"
+      ],
+      [
+        "Sample conditioning",
+        "Նմուշների նախամշակում"
+      ],
+      [
+        "Material preparation",
+        "Նյութերի պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "List all sample components and solvents and discuss the intended drying conditions.",
+      "Նշեք նմուշի բոլոր բաղադրիչներն ու լուծիչները և քննարկեք նախատեսվող չորացման պայմանները։"
+    ],
+    "tags": [
+      [
+        "Vacuum drying",
+        "Վակուումային չորացում"
+      ],
+      [
+        "Sample conditioning",
+        "Նմուշների նախամշակում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "autoclave",
+    "group": "preparation",
+    "acronym": "STEAM",
+    "model": "BIOBASE BKM-K18N",
+    "name": [
+      "Steam autoclave",
+      "Գոլորշային ավտոկլավ"
+    ],
+    "summary": [
+      "Steam sterilization of compatible laboratory items in an 18-liter chamber.",
+      "Համատեղելի լաբորատոր պարագաների գոլորշային ստերիլացում՝ 18 լիտրանոց խցիկում։"
+    ],
+    "about": [
+      "The BIOBASE BKM-K18N uses pressurized steam for sterilization of suitable loads. Load type and the applicable cycle must be confirmed before processing.",
+      "BIOBASE BKM-K18N սարքը համապատասխան բեռների ստերիլացման համար օգտագործում է ճնշման տակ գոլորշի։ Մշակումից առաջ պետք է ճշտել բեռի տեսակը և կիրառվող ցիկլը։"
+    ],
+    "uses": [
+      [
+        "Laboratory sterilization",
+        "Լաբորատոր ստերիլացում"
+      ],
+      [
+        "Compatible glassware",
+        "Համատեղելի ապակյա պարագաներ"
+      ],
+      [
+        "Laboratory preparation",
+        "Լաբորատոր նախապատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Confirm the load material, packaging and sterilization requirements with laboratory staff.",
+      "Լաբորատորիայի աշխատակցի հետ ճշտեք բեռի նյութը, փաթեթավորումը և ստերիլացման պահանջները։"
+    ],
+    "tags": [
+      [
+        "Laboratory sterilization",
+        "Լաբորատոր ստերիլացում"
+      ],
+      [
+        "Compatible glassware",
+        "Համատեղելի ապակյա պարագաներ"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "ph-orp",
+    "group": "characterization",
+    "acronym": "pH / ORP",
+    "model": "Milwaukee MW151 MAX",
+    "name": [
+      "pH, ORP & temperature measurements",
+      "pH-ի, ORP-ի և ջերմաստիճանի չափումներ"
+    ],
+    "summary": [
+      "Benchtop measurement of solution pH, oxidation–reduction potential and temperature.",
+      "Լուծույթների pH-ի, օքսիդավերականգնման պոտենցիալի և ջերմաստիճանի սեղանադիր չափումներ։"
+    ],
+    "about": [
+      "The Milwaukee MW151 MAX supports electrochemical solution measurements using suitable electrodes. Electrode selection and calibration depend on the sample and the quantity being measured.",
+      "Milwaukee MW151 MAX սարքը համապատասխան էլեկտրոդներով կատարում է լուծույթների էլեկտրաքիմիական չափումներ։ Էլեկտրոդի ընտրությունն ու չափաբերումը կախված են նմուշից և չափվող մեծությունից։"
+    ],
+    "uses": [
+      [
+        "pH measurement",
+        "pH-ի չափում"
+      ],
+      [
+        "ORP measurement",
+        "ORP-ի չափում"
+      ],
+      [
+        "Solution temperature",
+        "Լուծույթի ջերմաստիճան"
+      ]
+    ],
+    "workflow": [
+      "Describe the solution, expected pH or potential range and calibration requirements.",
+      "Նկարագրեք լուծույթը, pH-ի կամ պոտենցիալի սպասվող միջակայքը և չափաբերման պահանջները։"
+    ],
+    "tags": [
+      [
+        "pH measurement",
+        "pH-ի չափում"
+      ],
+      [
+        "ORP measurement",
+        "ORP-ի չափում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "ph-conductivity",
+    "group": "characterization",
+    "acronym": "pH / EC",
+    "model": "WTW ProfiLine pH/Cond 3320 set 2",
+    "name": [
+      "pH & conductivity measurements",
+      "pH-ի և հաղորդականության չափումներ"
+    ],
+    "summary": [
+      "Combined measurement of solution pH and electrical conductivity.",
+      "Լուծույթների pH-ի և էլեկտրահաղորդականության համակցված չափումներ։"
+    ],
+    "about": [
+      "The WTW ProfiLine pH/Cond 3320 is used with compatible pH and conductivity sensors. Measurement and calibration conditions are selected for the solution and its expected concentration range.",
+      "WTW ProfiLine pH/Cond 3320 սարքն օգտագործվում է համատեղելի pH և հաղորդականության սենսորներով։ Չափման և չափաբերման պայմաններն ընտրվում են լուծույթի և կոնցենտրացիայի սպասվող միջակայքի համար։"
+    ],
+    "uses": [
+      [
+        "Solution conductivity",
+        "Լուծույթի հաղորդականություն"
+      ],
+      [
+        "pH characterization",
+        "pH-ի բնութագրում"
+      ],
+      [
+        "Electrolyte preparation",
+        "Էլեկտրոլիտի պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Specify the electrolyte or solution composition and expected conductivity and pH.",
+      "Նշեք էլեկտրոլիտի կամ լուծույթի բաղադրությունը, սպասվող հաղորդականությունն ու pH-ը։"
+    ],
+    "tags": [
+      [
+        "Solution conductivity",
+        "Լուծույթի հաղորդականություն"
+      ],
+      [
+        "pH characterization",
+        "pH-ի բնութագրում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "balance",
+    "group": "preparation",
+    "acronym": "MASS",
+    "model": "Sartorius Practum",
+    "name": [
+      "Laboratory precision balance",
+      "Լաբորատոր ճշգրիտ կշեռք"
+    ],
+    "summary": [
+      "Mass measurement for material weighing and solution preparation.",
+      "Զանգվածի չափում՝ նյութերի կշռման և լուծույթների պատրաստման համար։"
+    ],
+    "about": [
+      "The Sartorius Practum balance supports controlled weighing in the laboratory. A suitable vessel and handling procedure are selected for the material and required measurement precision.",
+      "Sartorius Practum կշեռքն ապահովում է լաբորատորիայում վերահսկվող կշռում։ Տարան և աշխատանքի ընթացակարգն ընտրվում են ըստ նյութի և անհրաժեշտ չափման ճշտության։"
+    ],
+    "uses": [
+      [
+        "Material weighing",
+        "Նյութերի կշռում"
+      ],
+      [
+        "Solution preparation",
+        "Լուծույթների պատրաստում"
+      ],
+      [
+        "Sample mass tracking",
+        "Նմուշների զանգվածի վերահսկում"
+      ]
+    ],
+    "workflow": [
+      "Discuss the material, approximate mass and required weighing precision.",
+      "Քննարկեք նյութը, մոտավոր զանգվածը և կշռման անհրաժեշտ ճշտությունը։"
+    ],
+    "tags": [
+      [
+        "Material weighing",
+        "Նյութերի կշռում"
+      ],
+      [
+        "Solution preparation",
+        "Լուծույթների պատրաստում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "ultrasonic-cleaner",
+    "group": "preparation",
+    "acronym": "US",
+    "model": "BIOBASE Ultrasonic Cleaner",
+    "name": [
+      "Ultrasonic cleaning",
+      "Ուլտրաձայնային մաքրում"
+    ],
+    "summary": [
+      "Ultrasonic bath treatment for compatible substrates and laboratory items.",
+      "Համատեղելի ենթաշերտերի և լաբորատոր պարագաների մշակում՝ ուլտրաձայնային բաղնիքում։"
+    ],
+    "about": [
+      "The ultrasonic cleaner applies ultrasonic energy through a liquid bath. The cleaning medium, duration and compatibility with coatings or fragile samples are reviewed before use.",
+      "Ուլտրաձայնային մաքրիչը հեղուկ բաղնիքի միջոցով հաղորդում է ուլտրաձայնային էներգիա։ Օգտագործումից առաջ ճշտվում են մաքրող միջավայրը, տևողությունը և ծածկույթների կամ փխրուն նմուշների համատեղելիությունը։"
+    ],
+    "uses": [
+      [
+        "Substrate cleaning",
+        "Ենթաշերտերի մաքրում"
+      ],
+      [
+        "Laboratory item cleaning",
+        "Լաբորատոր պարագաների մաքրում"
+      ],
+      [
+        "Sample preparation",
+        "Նմուշների պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Confirm sample materials, coatings and the proposed cleaning liquid.",
+      "Ճշտեք նմուշի նյութերը, ծածկույթները և նախատեսվող մաքրող հեղուկը։"
+    ],
+    "tags": [
+      [
+        "Substrate cleaning",
+        "Ենթաշերտերի մաքրում"
+      ],
+      [
+        "Laboratory item cleaning",
+        "Լաբորատոր պարագաների մաքրում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "water-bath",
+    "group": "preparation",
+    "acronym": "BATH",
+    "model": "FAITHFUL Thermostatic Water Bath",
+    "name": [
+      "Thermostatic water bath",
+      "Ջերմակարգավորվող ջրային բաղնիք"
+    ],
+    "summary": [
+      "Temperature-controlled liquid-bath treatment for compatible sample containers.",
+      "Նմուշների համատեղելի տարաների մշակում՝ ջերմակարգավորվող հեղուկ բաղնիքում։"
+    ],
+    "about": [
+      "The water bath provides an indirect heating environment for laboratory samples. Container immersion, temperature and treatment time are selected for the intended procedure.",
+      "Ջրային բաղնիքն ապահովում է լաբորատոր նմուշների անուղղակի տաքացում։ Տարայի ընկղմումը, ջերմաստիճանն ու մշակման ժամանակն ընտրվում են նախատեսվող ընթացակարգի համար։"
+    ],
+    "uses": [
+      [
+        "Temperature conditioning",
+        "Ջերմաստիճանային նախամշակում"
+      ],
+      [
+        "Indirect heating",
+        "Անուղղակի տաքացում"
+      ],
+      [
+        "Sample preparation",
+        "Նմուշների պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Describe the container, desired temperature and treatment duration.",
+      "Նկարագրեք տարան, անհրաժեշտ ջերմաստիճանը և մշակման տևողությունը։"
+    ],
+    "tags": [
+      [
+        "Temperature conditioning",
+        "Ջերմաստիճանային նախամշակում"
+      ],
+      [
+        "Indirect heating",
+        "Անուղղակի տաքացում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "hotplate-stirrer",
+    "group": "preparation",
+    "acronym": "MIX",
+    "model": "BIOBASE BS Series",
+    "name": [
+      "Hotplate magnetic stirrer",
+      "Տաքացվող մագնիսական խառնիչ"
+    ],
+    "summary": [
+      "Combined stirring and hotplate heating for laboratory solutions.",
+      "Լաբորատոր լուծույթների խառնում և սալիկով տաքացում։"
+    ],
+    "about": [
+      "The magnetic stirrer rotates a compatible stir bar in a vessel while the hotplate supplies heat. Vessel size, liquid properties and temperature requirements guide the setup.",
+      "Մագնիսական խառնիչը տարայում պտտեցնում է համատեղելի խառնիչ ձողիկը, իսկ սալիկը ապահովում է տաքացում։ Կարգավորումն ընտրվում է ըստ տարայի չափի, հեղուկի հատկությունների և ջերմաստիճանային պահանջների։"
+    ],
+    "uses": [
+      [
+        "Solution mixing",
+        "Լուծույթների խառնում"
+      ],
+      [
+        "Heated preparation",
+        "Պատրաստում տաքացմամբ"
+      ],
+      [
+        "Chemical workflows",
+        "Քիմիական գործընթացներ"
+      ]
+    ],
+    "workflow": [
+      "Specify the liquid, vessel size and planned heating and mixing conditions.",
+      "Նշեք հեղուկը, տարայի չափը և նախատեսվող տաքացման ու խառնման պայմանները։"
+    ],
+    "tags": [
+      [
+        "Solution mixing",
+        "Լուծույթների խառնում"
+      ],
+      [
+        "Heated preparation",
+        "Պատրաստում տաքացմամբ"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "heating-mantle",
+    "group": "preparation",
+    "acronym": "HEAT / MIX",
+    "model": "FAITHFUL Digital Magnetic Stirring Heating Mantle",
+    "name": [
+      "Stirring heating mantle",
+      "Տաքացնող մանտիա՝ խառնմամբ"
+    ],
+    "summary": [
+      "Heating and magnetic stirring for compatible round-bottom flasks.",
+      "Համատեղելի կլորահատակ կոլբաների տաքացում և մագնիսական խառնում։"
+    ],
+    "about": [
+      "The heating mantle supports round-bottom flask heating with a stirring function. Flask compatibility, sensor placement and the experimental heating profile are agreed before use.",
+      "Տաքացնող մանտիան նախատեսված է կլորահատակ կոլբաների տաքացման և խառնման համար։ Օգտագործումից առաջ համաձայնեցվում են կոլբայի համատեղելիությունը, սենսորի դիրքն ու փորձի տաքացման ծրագիրը։"
+    ],
+    "uses": [
+      [
+        "Flask heating",
+        "Կոլբաների տաքացում"
+      ],
+      [
+        "Solution stirring",
+        "Լուծույթների խառնում"
+      ],
+      [
+        "Synthesis preparation",
+        "Սինթեզի նախապատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Provide the flask volume, reaction medium and required temperature profile.",
+      "Ներկայացրեք կոլբայի ծավալը, ռեակցիայի միջավայրը և անհրաժեշտ ջերմաստիճանային ծրագիրը։"
+    ],
+    "tags": [
+      [
+        "Flask heating",
+        "Կոլբաների տաքացում"
+      ],
+      [
+        "Solution stirring",
+        "Լուծույթների խառնում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "water-distiller",
+    "group": "preparation",
+    "acronym": "H₂O",
+    "model": "LISTON A 1204",
+    "name": [
+      "Laboratory water distiller",
+      "Լաբորատոր ջրի թորիչ"
+    ],
+    "summary": [
+      "Distilled-water preparation for suitable laboratory workflows.",
+      "Թորած ջրի ստացում՝ համապատասխան լաբորատոր աշխատանքների համար։"
+    ],
+    "about": [
+      "The LISTON A 1204 prepares distilled water through evaporation and condensation. Water grade and collection conditions are selected according to the intended laboratory use.",
+      "LISTON A 1204 սարքը գոլորշիացման և խտացման միջոցով ստանում է թորած ջուր։ Ջրի պահանջվող որակն ու հավաքման պայմաններն ընտրվում են նախատեսվող լաբորատոր կիրառության համար։"
+    ],
+    "uses": [
+      [
+        "Distilled-water supply",
+        "Թորած ջրի ապահովում"
+      ],
+      [
+        "Solution preparation",
+        "Լուծույթների պատրաստում"
+      ],
+      [
+        "Laboratory support",
+        "Լաբորատոր ապահովում"
+      ]
+    ],
+    "workflow": [
+      "Confirm the required water grade and amount for your procedure.",
+      "Ճշտեք ձեր գործընթացի համար պահանջվող ջրի որակն ու քանակը։"
+    ],
+    "tags": [
+      [
+        "Distilled-water supply",
+        "Թորած ջրի ապահովում"
+      ],
+      [
+        "Solution preparation",
+        "Լուծույթների պատրաստում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "ultrapure-water",
+    "group": "preparation",
+    "acronym": "UPW",
+    "model": "LABOAO Laboratory Water Purifier",
+    "name": [
+      "Laboratory ultrapure-water system",
+      "Լաբորատոր գերմաքուր ջրի համակարգ"
+    ],
+    "summary": [
+      "Purified-water supply for laboratory sample and solution preparation.",
+      "Մաքրված ջրի ապահովում՝ լաբորատոր նմուշների և լուծույթների պատրաստման համար։"
+    ],
+    "about": [
+      "The LABOAO water purification system supplies treated water for laboratory workflows. The required water quality and the system condition are checked for each application.",
+      "LABOAO ջրի մաքրման համակարգը լաբորատոր աշխատանքների համար ապահովում է մշակված ջուր։ Յուրաքանչյուր կիրառության համար ճշտվում են անհրաժեշտ ջրի որակն ու համակարգի վիճակը։"
+    ],
+    "uses": [
+      [
+        "Purified-water supply",
+        "Մաքրված ջրի ապահովում"
+      ],
+      [
+        "Solution preparation",
+        "Լուծույթների պատրաստում"
+      ],
+      [
+        "Sample preparation",
+        "Նմուշների պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Discuss water-quality requirements and the intended sample preparation workflow.",
+      "Քննարկեք ջրի որակին ներկայացվող պահանջներն ու նմուշի պատրաստման ընթացքը։"
+    ],
+    "tags": [
+      [
+        "Purified-water supply",
+        "Մաքրված ջրի ապահովում"
+      ],
+      [
+        "Solution preparation",
+        "Լուծույթների պատրաստում"
+      ]
+    ],
+    "bookable": false
+  },
+  {
+    "id": "high-speed-centrifuge",
+    "group": "preparation",
+    "acronym": "CENTRIFUGE",
+    "model": "BIOBASE High Speed Centrifuge",
+    "name": [
+      "High-speed centrifuge",
+      "Բարձր արագությամբ ցենտրիֆուգ"
+    ],
+    "summary": [
+      "Centrifugal separation and sample preparation using compatible rotors and tubes.",
+      "Կենտրոնախույս բաժանում և նմուշների պատրաստում՝ համատեղելի ռոտորներով ու փորձանոթներով։"
+    ],
+    "about": [
+      "The high-speed centrifuge separates sample components through centrifugal acceleration. Rotor and tube compatibility, balancing and the required relative centrifugal force are confirmed before each run.",
+      "Բարձր արագությամբ ցենտրիֆուգը կենտրոնախույս արագացման միջոցով բաժանում է նմուշի բաղադրիչները։ Յուրաքանչյուր գործարկումից առաջ ճշտվում են ռոտորի և փորձանոթների համատեղելիությունը, հավասարակշռումն ու անհրաժեշտ հարաբերական կենտրոնախույս ուժը։"
+    ],
+    "uses": [
+      [
+        "Centrifugal separation",
+        "Կենտրոնախույս բաժանում"
+      ],
+      [
+        "Particle collection",
+        "Մասնիկների հավաքում"
+      ],
+      [
+        "Sample preparation",
+        "Նմուշների պատրաստում"
+      ]
+    ],
+    "workflow": [
+      "Specify sample composition, tube type, volume, requested force and run duration.",
+      "Նշեք նմուշի բաղադրությունը, փորձանոթի տեսակը, ծավալը, անհրաժեշտ ուժը և գործարկման տևողությունը։"
+    ],
+    "tags": [
+      [
+        "Centrifugal separation",
+        "Կենտրոնախույս բաժանում"
+      ],
+      [
+        "Particle collection",
+        "Մասնիկների հավաքում"
+      ]
+    ],
+    "bookable": true
   }
 ]

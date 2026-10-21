@@ -8,7 +8,7 @@
   let language = params.get('lang') === 'hy' ? 'hy' : params.get('lang') === 'en' ? 'en' : savedLanguage === 'hy' ? 'hy' : 'en';
   const directory = $('[data-directory]');
   let filter = directory ? directory.dataset.directory : 'all';
-  const validFilters = ['all', 'fabrication', 'characterization'];
+  const validFilters = ['all', 'fabrication', 'characterization', 'preparation'];
   if (directory && validFilters.includes(params.get('group'))) filter = params.get('group');
   const searchInput = $('#equipment-search');
   if (searchInput && params.has('q')) searchInput.value = params.get('q');
@@ -36,7 +36,8 @@
     });
     $$('[data-directory-group]').forEach(group => { group.hidden = !$$('[data-equipment]', group).some(card => !card.hidden); });
     $$('[data-filter]').forEach(button => { button.setAttribute('aria-pressed', String(button.dataset.filter === filter)); });
-    $('#results-count').textContent = language === 'hy' ? `Ցուցադրված է ${count} սարքավորում՝ 12-ից` : `Showing ${count} of 12 capabilities`;
+    const total = $$('[data-equipment]', directory).length;
+    $('#results-count').textContent = language === 'hy' ? `Ցուցադրված է ${count} սարքավորում՝ ${total}-ից` : `Showing ${count} of ${total} capabilities`;
     $('.no-results').hidden = count !== 0;
     $('#clear-search').hidden = searchInput.value.length === 0;
     if (writeURL) {
@@ -64,6 +65,7 @@
     localLinks();
     updateDirectory();
     $$('iframe[data-icnt-video]').forEach(frame => { frame.title = language === 'hy' ? `ICNT — Տեսանյութ ${frame.dataset.icntVideo}` : `ICNT — Video ${frame.dataset.icntVideo}`; });
+    document.dispatchEvent(new CustomEvent('icnt-language', {detail: {language}}));
     if (announce) $('#language-status').textContent = language === 'hy' ? 'Կայքը հայերեն է։' : 'The site is now in English.';
   }
   $$('[data-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang, true, true)));
@@ -78,7 +80,7 @@
   $$('a', nav).forEach(anchor => anchor.addEventListener('click', closeMenu));
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('is-open')) { closeMenu(); menu.focus(); } });
   document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closeMenu(); });
-  window.addEventListener('resize', () => { if (window.innerWidth > 880) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 1050) closeMenu(); });
   $$('[data-filter]').forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; updateDirectory(true); }));
   if (searchInput) {
     searchInput.addEventListener('input', () => updateDirectory(true));
