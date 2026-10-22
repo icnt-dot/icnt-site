@@ -988,7 +988,7 @@
   },
   {
     "id": "ph-orp",
-    "group": "characterization",
+    "group": "preparation",
     "acronym": "pH / ORP",
     "model": "Milwaukee MW151 MAX",
     "name": [
@@ -1035,7 +1035,7 @@
   },
   {
     "id": "ph-conductivity",
-    "group": "characterization",
+    "group": "preparation",
     "acronym": "pH / EC",
     "model": "WTW ProfiLine pH/Cond 3320 set 2",
     "name": [

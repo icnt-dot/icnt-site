@@ -28,6 +28,11 @@ var ICNTCore = (function () {
   function day(now) { return new Date(Number(now) + 4 * 3600000).toISOString().slice(0, 10); }
   function timestamp(d, t) { return new Date(d + 'T' + t + ':00+04:00').getTime(); }
   function active(b) { return b.status === 'pending' || b.status === 'approved'; }
+  function condition(value) {
+    if(value===undefined || value===null || value==='') return 'available';
+    if(!['available','problem','out-of-order'].includes(value)) fail('SETTINGS');
+    return value;
+  }
   function conflicts(bookings, candidate, exceptId) {
     return bookings.some(function (b) {
       return b.id !== exceptId && b.equipmentId === candidate.equipmentId && b.date === candidate.date && active(b) && b.start < candidate.end && candidate.start < b.end;
@@ -39,12 +44,13 @@ var ICNTCore = (function () {
     var slot = Number(e.slot), max = Number(e.maxMinutes), ahead = Number(e.maxDays);
     var days = String(e.days || '').split(',').map(Number);
     if (open >= close || ![15, 30, 60].includes(slot) || max < slot || max > close - open || max % slot || !Number.isInteger(ahead) || ahead < 1 || ahead > 180 || !/^[0-6](,[0-6])*$/.test(String(e.days)) || new Set(days).size !== days.length) fail('SETTINGS');
-    return Object.assign({}, e, {enabled: e.enabled === true || e.enabled === 'true', open:String(e.open), close:String(e.close), days:String(e.days), slot: slot, maxMinutes: max, maxDays: ahead});
+    return Object.assign({}, e, {condition:condition(e.condition), enabled: e.enabled === true || e.enabled === 'true', open:String(e.open), close:String(e.close), days:String(e.days), slot: slot, maxMinutes: max, maxDays: ahead});
   }
   function validate(raw, e, bookings, now) {
     if (!isBookable(raw.equipmentId)) fail('NOT_BOOKABLE');
     if (!e || raw.equipmentId !== e.id) fail('EQUIPMENT');
     e = settings(e);
+    if (e.condition==='out-of-order') fail('OUT_OF_ORDER');
     if (!e.enabled) fail('DISABLED');
     var d = date(raw.date), start = minutes(raw.start), end = minutes(raw.end), today = day(now);
     var distance = (Date.parse(d) - Date.parse(today)) / 86400000;
@@ -57,5 +63,5 @@ var ICNTCore = (function () {
     if (conflicts(bookings, b)) fail('CONFLICT');
     return b;
   }
-  return {BOOKABLE:BOOKABLE, isBookable:isBookable, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
+  return {BOOKABLE:BOOKABLE, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
 })();
