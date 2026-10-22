@@ -1,4 +1,4 @@
-/* ICNT Bookings — shared validation used by Apps Script and the private demo. */
+/* ICNT Bookings — shared validation used by Apps Script and the booking interface. */
 var ICNTCore = (function () {
   'use strict';
   var BOOKABLE = ['afm','raman','electrochemistry','dls','high-speed-centrifuge','freeze-dryer'];
