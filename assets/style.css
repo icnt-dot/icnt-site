@@ -27,3 +27,9 @@ h1,h2,h3,.hero-emphasis{overflow-wrap:anywhere}.equipment-card,.planning-panel,.
 .capability-card.preparation{background:#edf2e9;color:var(--navy)}.capability-card.preparation p{color:#516d61}.capability-card.preparation .capability-footer{border-color:#b5c7b6}.capability-card.preparation .capability-top{color:#60856a}.combined-equipment-note{border-top:1px solid var(--line);padding-top:18px;margin-top:20px;color:var(--teal)!important}
 @media(min-width:1101px){.capability-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.capability-card{padding:28px}.capability-card h3{font-size:25px}}
 @media(min-width:621px) and (max-width:1100px){.capability-card.preparation{grid-column:1/-1;min-height:260px}}
+
+@font-face{font-family:ICNT Armenian;src:url("fonts/icnt-regular.woff") format("woff");font-weight:400 500;font-display:swap}@font-face{font-family:ICNT Armenian;src:url("fonts/icnt-bold.woff") format("woff");font-weight:600 900;font-display:swap}html[lang=hy] body,html[lang=hy] button,html[lang=hy] input,html[lang=hy] select,html[lang=hy] textarea{font-family:"ICNT Armenian",Arial,sans-serif}html[lang=hy] h1,html[lang=hy] h2,html[lang=hy] h3{letter-spacing:0;line-height:1.45}html[lang=hy] .eyebrow,html[lang=hy] .overline{letter-spacing:.035em;line-height:1.7}
+
+/* Comfortable touch controls and long Armenian labels. */
+@media(max-width:760px){.language-switch button{min-width:44px;min-height:44px}.container{width:calc(100% - 32px)}h1{overflow-wrap:anywhere}.equipment-grid{min-width:0}.site-header nav>a{white-space:normal;min-height:44px;display:flex;align-items:center}.nav-bar{gap:12px}.nav-actions{gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}

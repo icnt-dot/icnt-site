@@ -1,3 +1,4 @@
 {
-  "webAppUrl": "https://script.google.com/macros/s/AKfycbyEyBLyS98mEcTIGDcTeSruTi8TA6DMvi46stg05dzoWt1_IM4Uu-nfSMimT9lg4qAy/exec"
+  "mode": "cloudflare",
+  "apiUrl": ""
 }

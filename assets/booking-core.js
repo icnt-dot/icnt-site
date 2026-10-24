@@ -33,9 +33,24 @@ var ICNTCore = (function () {
     if(!['available','problem','out-of-order'].includes(value)) fail('SETTINGS');
     return value;
   }
+  function resource(id) { return ['afm','raman'].includes(id) ? 'afm-raman' : id; }
+  function monday(value) {
+    var d=new Date(date(value)+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-(d.getUTCDay()+6)%7);return d.toISOString().slice(0,10);
+  }
+  function addDays(value,n) {return new Date(Date.parse(date(value)+'T12:00:00Z')+n*86400000).toISOString().slice(0,10);}
+  // Greedy interval packing within each connected overlap cluster.
+  function layoutEvents(items) {
+    var sorted=items.map(function(b,i){return {booking:b,index:i};}).sort(function(a,b){return a.booking.start.localeCompare(b.booking.start)||a.booking.end.localeCompare(b.booking.end);}),result=[],cluster=[],ends=[],until='';
+    function finish(){cluster.forEach(function(x){x.columns=ends.length;result.push(x);});cluster=[];ends=[];until='';}
+    sorted.forEach(function(x){
+      if(cluster.length && x.booking.start>=until)finish();
+      var lane=ends.findIndex(function(end){return end<=x.booking.start;});if(lane<0)lane=ends.length;
+      ends[lane]=x.booking.end;x.column=lane;cluster.push(x);if(x.booking.end>until)until=x.booking.end;
+    });finish();return result;
+  }
   function conflicts(bookings, candidate, exceptId) {
     return bookings.some(function (b) {
-      return b.id !== exceptId && b.equipmentId === candidate.equipmentId && b.date === candidate.date && active(b) && b.start < candidate.end && candidate.start < b.end;
+      return b.id !== exceptId && resource(b.equipmentId) === resource(candidate.equipmentId) && b.date === candidate.date && active(b) && b.start < candidate.end && candidate.start < b.end;
     });
   }
   function settings(e) {
@@ -58,10 +73,10 @@ var ICNTCore = (function () {
     if (!e.days.split(',').map(Number).includes(new Date(d + 'T12:00:00Z').getUTCDay())) fail('CLOSED');
     var open = minutes(e.open);
     if (start < open || end > minutes(e.close) || end <= start || (start - open) % e.slot || (end - start) % e.slot || end - start > e.maxMinutes) fail('HOURS');
-    var b = {equipmentId: e.id, date: d, start: clock(start), end: clock(end), purpose: text(raw.purpose, 600, 5), name: text(raw.name, 100, 2), organization: text(raw.organization, 120, 2), requestId: text(raw.requestId, 100, 12)};
+    var b = {equipmentId: e.id, date: d, start: clock(start), end: clock(end), purpose: text(raw.purpose, 600, 5), name: text(raw.name, 100, 2), organization: text(raw.organization, 120, 2), laboratory: text(raw.laboratory, 120, 0), requestId: text(raw.requestId, 100, 12)};
     if (!/^[\w-]+$/.test(b.requestId)) fail('INPUT');
     if (conflicts(bookings, b)) fail('CONFLICT');
     return b;
   }
-  return {BOOKABLE:BOOKABLE, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
+  return {BOOKABLE:BOOKABLE, monday:monday, addDays:addDays, layoutEvents:layoutEvents, resource:resource, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
 })();
