@@ -1,4 +1,4 @@
 {
   "mode": "cloudflare",
-  "apiUrl": ""
+  "apiUrl": "https://icnt-booking-api.icnt.workers.dev/api/booking"
 }
