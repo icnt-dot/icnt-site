@@ -144,5 +144,41 @@
     if (directory) { filter = validFilters.includes(state.get('group')) ? state.get('group') : directory.dataset.directory; searchInput.value = state.get('q') || ''; }
     setLanguage(state.get('lang') === 'hy' ? 'hy' : 'en', false);
   });
+  // Keep contact actions usable even when the computer has no mailto handler.
+  const contactDialog = document.createElement('dialog');
+  contactDialog.className = 'contact-mail-dialog';
+  contactDialog.id = 'contact-mail-dialog';
+  contactDialog.setAttribute('aria-labelledby', 'contact-mail-title');
+  contactDialog.innerHTML = `<div class="contact-mail-heading"><h2 id="contact-mail-title" data-en="Write to ICNT" data-hy="Գրել ICNT կենտրոնին"></h2><button type="button" class="contact-mail-close" aria-label="Close" data-en-aria="Close" data-hy-aria="Փակել">×</button></div>
+    <p data-en="Choose how to contact us. Your message will open for you to review and send." data-hy="Ընտրեք՝ ինչպես գրել մեզ։ Նամակը կբացվի ձեր կողմից ստուգելու և ուղարկելու համար։"></p>
+    <label for="contact-mail-address" data-en="Center email" data-hy="Կենտրոնի էլփոստը"></label>
+    <input id="contact-mail-address" type="text" readonly value="icnt@icnt-ichph.com" spellcheck="false">
+    <div class="contact-mail-actions"><a class="button button-teal" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=icnt%40icnt-ichph.com" target="_blank" rel="noopener noreferrer" data-en="Write in Gmail ↗" data-hy="Գրել Gmail-ով ↗"></a>
+    <button type="button" class="button button-navy" id="contact-mail-copy" data-en="Copy email address" data-hy="Պատճենել էլփոստը"></button>
+    <a class="contact-mail-native" data-native-mail href="mailto:icnt@icnt-ichph.com" data-en="Open my email app" data-hy="Բացել իմ էլփոստային ծրագիրը"></a></div>
+    <p class="contact-mail-status" role="status" aria-live="polite"></p>`;
+  document.body.append(contactDialog);
+  let contactTrigger;
+  document.addEventListener('click', event => {
+    const anchor=event.target.closest('a[href]');
+    if(!anchor || anchor.hasAttribute('data-native-mail') || !/^mailto:icnt@icnt-ichph\.com(?:\?|$)/i.test(anchor.getAttribute('href')||''))return;
+    event.preventDefault();
+    contactTrigger=anchor;
+    const status=$('.contact-mail-status',contactDialog);
+    status.textContent='';status.removeAttribute('data-en');status.removeAttribute('data-hy');
+    if(!contactDialog.open)contactDialog.showModal();
+  });
+  $('.contact-mail-close',contactDialog).addEventListener('click',()=>contactDialog.close());
+  contactDialog.addEventListener('click',event=>{if(event.target===contactDialog)contactDialog.close();});
+  contactDialog.addEventListener('close',()=>contactTrigger?.focus());
+  $('#contact-mail-copy').addEventListener('click',async()=>{
+    const status=$('.contact-mail-status',contactDialog),address=$('#contact-mail-address');
+    let copied=false;
+    try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(address.value);copied=true;}}catch(_){}
+    if(!copied){address.focus();address.select();try{copied=Boolean(document.execCommand?.('copy'));}catch(_){}}
+    status.dataset.en=copied?'Email address copied.':'Select the address above and copy it manually.';
+    status.dataset.hy=copied?'Էլփոստի հասցեն պատճենված է։':'Ընտրեք վերևի հասցեն և պատճենեք ձեռքով։';
+    status.textContent=status.dataset[language];
+  });
   setLanguage(language, false);
 })();

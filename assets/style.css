@@ -33,3 +33,16 @@ h1,h2,h3,.hero-emphasis{overflow-wrap:anywhere}.equipment-card,.planning-panel,.
 /* Comfortable touch controls and long Armenian labels. */
 @media(max-width:760px){.language-switch button{min-width:44px;min-height:44px}.container{width:calc(100% - 32px)}h1{overflow-wrap:anywhere}.equipment-grid{min-width:0}.site-header nav>a{white-space:normal;min-height:44px;display:flex;align-items:center}.nav-bar{gap:12px}.nav-actions{gap:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Contact chooser works without an OS email application. */
+.contact-mail-dialog{box-sizing:border-box;width:min(540px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #c6dcd6;border-radius:18px;padding:28px;background:#fff;color:#102c39;box-shadow:0 24px 80px #102c3933}
+.contact-mail-dialog::backdrop{background:#102c3999}
+.contact-mail-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.contact-mail-heading h2{margin:0;font-size:26px;line-height:1.4}
+.contact-mail-close{display:grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid #c6dcd6;background:#f1f7f4;border-radius:50%;font-size:28px;cursor:pointer;color:#102c39}
+.contact-mail-dialog p{font-size:16px;line-height:1.7;margin:16px 0;color:#4c6269}
+.contact-mail-dialog label{display:block;font-size:14px;margin:16px 0 8px}
+.contact-mail-dialog input{box-sizing:border-box;width:100%;min-width:0;padding:12px;border:1px solid #b9d3cc;border-radius:8px;font:inherit;font-size:17px;color:#102c39;background:#f5f9f7}
+.contact-mail-actions{display:grid;gap:12px;margin-top:20px}.contact-mail-actions .button{box-sizing:border-box;width:100%;justify-content:center;min-height:48px;text-align:center;white-space:normal;font:inherit;cursor:pointer}.contact-mail-native{text-align:center;text-decoration:underline;padding:10px;font-size:15px}
+.contact-mail-status:empty{display:none}.contact-mail-dialog :focus-visible{outline:3px solid #009889;outline-offset:3px}
+@media(max-width:480px){.contact-mail-dialog{padding:20px}.contact-mail-heading h2{font-size:22px}}
