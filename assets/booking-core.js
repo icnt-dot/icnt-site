@@ -53,6 +53,24 @@ var ICNTCore = (function () {
       return b.id !== exceptId && resource(b.equipmentId) === resource(candidate.equipmentId) && b.date === candidate.date && active(b) && b.start < candidate.end && candidate.start < b.end;
     });
   }
+  // Release only the tail of a live reservation. Server time controls finish-now.
+  function shorten(b,mode,end,now) {
+    if(!active(b))fail('STATUS');
+    if(!['shorten','finish'].includes(mode))fail('INPUT');
+    var startAt=timestamp(b.date,b.start),endAt=timestamp(b.date,b.end);
+    if(endAt<=now)fail('PAST');
+    if(mode==='finish') {
+      if(b.status!=='approved'||startAt>=now)fail('STATUS');
+      end=clock(Math.floor((now+4*3600000)%86400000/60000));
+      if(day(now)!==b.date)fail('PAST');
+    }else{
+      minutes(end);
+      if(timestamp(b.date,end)<=now)fail('PAST');
+      if(b.status==='pending'&&startAt<=now)fail('STATUS');
+    }
+    if(minutes(end)<=minutes(b.start)||minutes(end)>=minutes(b.end))fail('SHORTEN_TIME');
+    return end;
+  }
   function settings(e) {
     if (!e || !/^[a-z0-9-]+$/.test(String(e.id))) fail('EQUIPMENT');
     var open = minutes(e.open), close = minutes(e.close);
@@ -78,5 +96,5 @@ var ICNTCore = (function () {
     if (conflicts(bookings, b)) fail('CONFLICT');
     return b;
   }
-  return {BOOKABLE:BOOKABLE, monday:monday, addDays:addDays, layoutEvents:layoutEvents, resource:resource, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
+  return {shorten:shorten,BOOKABLE:BOOKABLE, monday:monday, addDays:addDays, layoutEvents:layoutEvents, resource:resource, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
 })();
