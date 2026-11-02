@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "icnt-booking-api",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-24",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": false },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://icnt-ichph.com,https://www.icnt-ichph.com"
+  },
+  "ratelimits": [
+    { "name": "API_LIMITER", "namespace_id": "21001", "simple": { "limit": 300, "period": 60 } },
+    { "name": "AUTH_LIMITER", "namespace_id": "21002", "simple": { "limit": 10, "period": 60 } }
+  ]
+}

@@ -63,11 +63,20 @@
     SHORTEN_TIME:['The end must be later than the start and earlier than the current end. To finish now, at least one full minute must have passed since the start.','Ավարտը պետք է լինի սկզբից ուշ և ընթացիկ ավարտից շուտ։ Հիմա ավարտելու համար սկզբից պետք է անցած լինի առնվազն մեկ ամբողջ րոպե։'],
     CHANGE_LIMIT:['This booking has reached its time-change limit. Contact ICNT.','Այս ամրագրումը հասել է ժամի փոփոխությունների սահմանաչափին։ Դիմեք ICNT-ին։']
   });
+  Object.assign(words,{
+    extendBooking:['Extend booking','Երկարացնել ամրագրումը'],newEnd:['New end time','Նոր ավարտաժամ'],saveExtension:['Confirm extension','Հաստատել երկարացումը'],
+    extended:['Extended','Երկարացվել է'],extendedSaved:['Booking extended. The additional time is reserved.','Ամրագրումը երկարացված է։ Լրացուցիչ ժամանակը զբաղեցված է։'],
+    extendHelp:['Choose a later end. Only continuous free time is offered, within working hours and the instrument’s maximum booking duration. Pending requests also block time. AFM and Raman share one calendar. Availability is checked again when saving.','Ընտրեք ավելի ուշ ավարտաժամ։ Առաջարկվում է միայն անմիջապես հաջորդող ազատ ժամանակը՝ աշխատանքային ժամերի և սարքի առավելագույն տևողության սահմաններում։ Սպասող հայտերը նույնպես զբաղեցնում են ժամանակը։ AFM և Raman-ն ունեն ընդհանուր օրացույց։ Պահպանելիս ազատ ժամանակը կրկին ստուգվում է։'],
+    noExtension:['No extension is available within the current schedule and duration limit.','Գործող ժամացույցի և տևողության սահմանաչափի պայմաններում երկարացնելու ազատ ժամանակ չկա։']
+  });
+  errors.EXTEND_TIME=['Choose an end later than the current end.','Ընտրեք ընթացիկ ավարտից ավելի ուշ ժամ։'];
+  let extendId='',extendLoad=0;
+  function canExtend(b){return b.status==='approved'&&!b.endedEarlyAt&&C.timestamp(b.date,b.end)>Date.now();}
   let shortenId='';
   function timeHistory(b){
     let list=[];try{list=JSON.parse(b.timeChanges||'[]');}catch(_){}
     if(!Array.isArray(list)||!list.length)return '';
-    return `<details class="bk-time-history"><summary>${esc(t('timeHistory'))}</summary><p>${esc(t('originalEnd'))}: ${esc(b.originalEnd)}</p><ol>${list.map(h=>`<li>${esc(h.date)} ${esc(h.start)}–${esc(h.previousEnd)} → ${esc(h.end)}<br>${esc(h.actor)} · ${esc(h.at)}${h.mode==='finish'?' · '+esc(t('finishedEarly')):''}</li>`).join('')}</ol></details>`;
+    return `<details class="bk-time-history"><summary>${esc(t('timeHistory'))}</summary><p>${esc(t('originalEnd'))}: ${esc(b.originalEnd)}</p><ol>${list.map(h=>`<li>${esc(h.date)} ${esc(h.start)}–${esc(h.previousEnd)} → ${esc(h.end)}<br>${esc(h.actor)} · ${esc(h.at)}${h.mode==='finish'?' · '+esc(t('finishedEarly')):h.mode==='extend'?' · '+esc(t('extended')):''}</li>`).join('')}</ol></details>`;
   }
   function canShorten(b){return C.active(b)&&C.timestamp(b.date,b.end)>Date.now()&&(b.status==='approved'||C.timestamp(b.date,b.start)>Date.now());}
   const t=key=>(words[key]||[key,key])[lang==='hy'?1:0];
@@ -100,7 +109,7 @@
     if(!googleLive)return Promise.reject(new Error('SETUP'));
     return new Promise((resolve,reject)=>{google.script.run.withSuccessHandler(r=>r.ok?resolve(r.data):reject(new Error(r.error))).withFailureHandler(()=>reject(new Error('SERVER'))).api(action,payload,token);});
   }
-  async function perform(button,fn){if(button.disabled)return;button.disabled=true;try{await fn();}catch(e){failure(e);}finally{button.disabled=false;if(button.id==='booking-submit')updateSelection();}}
+  async function perform(button,fn){if(button.disabled)return;button.disabled=true;try{await fn();}catch(e){failure(e);}finally{button.disabled=false;if(button.id==='booking-submit')updateSelection();if(button.closest('#booking-extend-form'))button.disabled=$('#booking-extend-form').elements.end.disabled;}}
   function syncRoute(){try{const url=new URL(location.href);url.searchParams.set('lang',lang);url.searchParams.set('equipment',equipmentId);url.searchParams.set('view',tab);url.searchParams.set('mode',calendarView);url.searchParams.set('date',selectedDate);history.replaceState({},'',url);}catch(_) {}}
   function translate(){
     document.documentElement.lang=lang;syncRoute();$$('input,textarea,select').forEach(el=>{if(el.validationMessage&&el.validity.customError)el.setCustomValidity(errors.INPUT[lang==='hy'?1:0]);});
@@ -111,7 +120,11 @@
     $('#booking-auth-help').textContent=t('authHelp');
     renderBanner();renderEquipment();renderAccount();renderWeek();renderTimes();renderMine();renderQueue();renderUsers();renderSettingsOptions();renderLogbook();
     $('#booking-duration').innerHTML=durationOptions();
-    $('#booking-duration').value=String(duration);updateSelection();if($('#booking-event-dialog').open)renderEventDetails();
+    $('#booking-duration').value=String(duration);updateSelection();
+    const extensionForm=$('#booking-extend-form'),extensionMessage=$('#booking-extend-message');
+    if(extensionMessage.dataset.error)extensionMessage.textContent=(errors[extensionMessage.dataset.error]||errors.SERVER)[lang==='hy'?1:0];
+    if(extensionForm.dataset.baseEnd)Array.from(extensionForm.elements.end.options).forEach(option=>{option.textContent=`${option.value} (+${C.minutes(option.value)-C.minutes(extensionForm.dataset.baseEnd)} ${t('minutes')})`;});
+    if($('#booking-event-dialog').open)renderEventDetails();
   }
   function renderBanner(){
     const el=$('#booking-banner');
@@ -226,12 +239,12 @@
   function setTab(next,load=true){if(next==='admin'&&user?.role!=='admin')next='calendar';if(next!=='calendar'&&!user){openAuth();return;}tab=next;syncRoute();$$('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===next)));['calendar','mine','logbook','admin'].forEach(k=>{$('#booking-'+k).hidden=k!==next;});if(next==='logbook'&&load)loadReports().catch(failure);if(next==='admin')refresh().catch(failure);if(next==='mine')refresh().catch(failure);}
   function bookingRows(list,admin=false){
     if(!list.length)return `<p class="bk-empty">${esc(t('noRequests'))}</p>`;
-    return [...list].sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start)).map(b=>{const e=equipment.find(x=>x.id===b.equipmentId),future=C.timestamp(b.date,b.start)>Date.now();return `<article class="bk-booking-row"><div class="bk-booking-info"><h3>${esc(name(e)||b.equipmentId)}${condition(e)!=='available'?`<span class="bk-condition ${esc(condition(e))}">${esc(t(condition(e)))}</span>`:''}<span class="bk-status ${esc(b.status)}">${esc(t(b.status))}</span></h3><strong>${esc(b.date)} · ${esc(b.start)}–${esc(b.end)}</strong>${admin?`<p>${esc(b.name)} · ${esc(b.email)}<br>${esc(t('organization'))}: ${esc(b.organization)}<br>${esc(t('laboratory'))}: ${esc(b.laboratory||'—')}</p>`:''}<p>${esc(b.purpose)}</p>${b.endedEarlyAt?`<span class="bk-status approved">${esc(t('finishedEarly'))}</span>`:''}${timeHistory(b)}<small>#${esc(b.id.slice(0,8))}</small></div><div class="bk-booking-actions">${canShorten(b)?`<button class="bk-button bk-outline" data-shorten="${esc(b.id)}">${esc(t('shortenBooking'))}</button>`:''}${b.status==='approved'&&C.timestamp(b.date,b.start)<Date.now()&&C.timestamp(b.date,b.end)>Date.now()?`<button class="bk-button bk-primary" data-finish-now="${esc(b.id)}" data-version="${esc(b.updatedAt||'')}">${esc(t('finishNow'))}</button>`:''}${admin&&b.status==='pending'&&future?`<button class="bk-button bk-primary" data-decision="approved" data-id="${esc(b.id)}" data-version="${esc(b.updatedAt||'')}" ${condition(e)==='out-of-order'?'disabled':''}>${esc(t('approve'))}</button><button class="bk-button bk-outline" data-decision="rejected" data-id="${esc(b.id)}" data-version="${esc(b.updatedAt||'')}">${esc(t('reject'))}</button>`:''}${admin&&C.active(b)&&future?`<button class="bk-button bk-outline" data-reschedule="${esc(b.id)}">${esc(t('reschedule'))}</button>`:''}${b.status==='approved'&&C.timestamp(b.date,b.end)<=Date.now()?`<button class="bk-button bk-outline" data-open-report="${esc(b.id)}">${esc(t('openRecord'))}</button>`:''}${C.active(b)&&(future||admin)?`<button class="bk-button bk-outline" data-cancel="${esc(b.id)}">${esc(t('cancel'))}</button>`:''}</div></article>`;}).join('');
+    return [...list].sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start)).map(b=>{const e=equipment.find(x=>x.id===b.equipmentId),future=C.timestamp(b.date,b.start)>Date.now();return `<article class="bk-booking-row"><div class="bk-booking-info"><h3>${esc(name(e)||b.equipmentId)}${condition(e)!=='available'?`<span class="bk-condition ${esc(condition(e))}">${esc(t(condition(e)))}</span>`:''}<span class="bk-status ${esc(b.status)}">${esc(t(b.status))}</span></h3><strong>${esc(b.date)} · ${esc(b.start)}–${esc(b.end)}</strong>${admin?`<p>${esc(b.name)} · ${esc(b.email)}<br>${esc(t('organization'))}: ${esc(b.organization)}<br>${esc(t('laboratory'))}: ${esc(b.laboratory||'—')}</p>`:''}<p>${esc(b.purpose)}</p>${b.endedEarlyAt?`<span class="bk-status approved">${esc(t('finishedEarly'))}</span>`:''}${timeHistory(b)}<small>#${esc(b.id.slice(0,8))}</small></div><div class="bk-booking-actions">${canExtend(b)?`<button class="bk-button bk-outline" data-extend="${esc(b.id)}">${esc(t('extendBooking'))}</button>`:''}${canShorten(b)?`<button class="bk-button bk-outline" data-shorten="${esc(b.id)}">${esc(t('shortenBooking'))}</button>`:''}${b.status==='approved'&&C.timestamp(b.date,b.start)<Date.now()&&C.timestamp(b.date,b.end)>Date.now()?`<button class="bk-button bk-primary" data-finish-now="${esc(b.id)}" data-version="${esc(b.updatedAt||'')}">${esc(t('finishNow'))}</button>`:''}${admin&&b.status==='pending'&&future?`<button class="bk-button bk-primary" data-decision="approved" data-id="${esc(b.id)}" data-version="${esc(b.updatedAt||'')}" ${condition(e)==='out-of-order'?'disabled':''}>${esc(t('approve'))}</button><button class="bk-button bk-outline" data-decision="rejected" data-id="${esc(b.id)}" data-version="${esc(b.updatedAt||'')}">${esc(t('reject'))}</button>`:''}${admin&&C.active(b)&&future?`<button class="bk-button bk-outline" data-reschedule="${esc(b.id)}">${esc(t('reschedule'))}</button>`:''}${b.status==='approved'&&C.timestamp(b.date,b.end)<=Date.now()?`<button class="bk-button bk-outline" data-open-report="${esc(b.id)}">${esc(t('openRecord'))}</button>`:''}${C.active(b)&&(future||admin)?`<button class="bk-button bk-outline" data-cancel="${esc(b.id)}">${esc(t('cancel'))}</button>`:''}</div></article>`;}).join('');
   }
   function renderMine(){const filter=$('#booking-mine-filter').value;$('#booking-mine-list').innerHTML=bookingRows(bookings.filter(b=>filter==='all'||(filter==='upcoming'?C.active(b)&&C.timestamp(b.date,b.end)>Date.now():!C.active(b)||C.timestamp(b.date,b.end)<=Date.now())));}
   function renderQueue(){const status=$('#booking-status-filter').value;$('#booking-queue').innerHTML=bookingRows(queue.filter(b=>status==='all'||b.status===status),true);}
   function renderUsers(){$('#booking-users').innerHTML=users.map(u=>`<div class="bk-user"><span>${esc(u.name)}${u.organization?`<small class="bk-user-organization">${esc(t('organization'))}: ${esc(u.organization)}</small>`:''}${u.laboratory?`<small>${esc(t('laboratory'))}: ${esc(u.laboratory)}</small>`:''}<small>${esc(u.email)} · ${esc(t(u.role==='admin'?'manager':'member'))} · ${esc(t(u.active?'active':'inactive'))}</small></span><button class="bk-button bk-outline" data-edit-user="${esc(u.email)}">${esc(t('edit'))}</button></div>`).join('');}
-  function fillBookingIdentity(){const f=$('#booking-form');f.elements.name.value=user?.name||'';f.elements.organization.value=user?.organization||'';f.elements.laboratory.value=user?.laboratory||'';if(!user){f.elements.purpose.value='';f.elements.confirm.checked=false;$('#booking-reschedule').close();$('#booking-shorten').close();$('#booking-event-dialog').close();}}
+  function fillBookingIdentity(){const f=$('#booking-form');f.elements.name.value=user?.name||'';f.elements.organization.value=user?.organization||'';f.elements.laboratory.value=user?.laboratory||'';if(!user){f.elements.purpose.value='';f.elements.confirm.checked=false;$('#booking-reschedule').close();$('#booking-shorten').close();$('#booking-extend').close();extendLoad++;$('#booking-event-dialog').close();}}
   function renderSettingsOptions(){const sel=$('#booking-settings-equipment'),value=sel.value||equipmentId;sel.innerHTML=equipment.map(e=>`<option value="${esc(e.id)}">${esc(name(e))}</option>`).join('');sel.value=value;fillSettings();}
   function fillSettings(){const f=$('#booking-settings-form'),e=equipment.find(x=>x.id===f.elements.id.value);if(!e)return;['open','close','slot','maxMinutes','maxDays'].forEach(k=>{f.elements[k].value=e[k];});f.elements.condition.value=condition(e);f.elements.enabled.checked=e.enabled;$('#booking-weekdays').innerHTML=Array.from({length:7},(_,i)=>{const day=(i+1)%7;return `<label><input type="checkbox" name="weekday" value="${day}" ${e.days.split(',').includes(String(day))?'checked':''}><span>${esc(weekday(addDays('2026-10-18',day)))}</span></label>`;}).join('');}
   async function refresh(){if(!user)return;const r=await rawCall('state');user=r.user;equipment=r.equipment;bookings=r.bookings;users=r.users;renderAccount();renderEquipment();renderMine();renderUsers();if(user.role==='admin'){queue=(await rawCall('queue')).bookings;renderQueue();}}
@@ -260,6 +273,30 @@
   $('#booking-week').addEventListener('click',e=>{const b=e.target.closest('[data-day]');if(b)chooseDate(b.dataset.day);});$('#booking-duration').addEventListener('change',e=>{duration=Number(e.target.value);loadAvailability();});
   $('#booking-slots').addEventListener('click',e=>{const b=e.target.closest('[data-start]');if(!b||b.disabled)return;selectedTime=b.dataset.start;requestId=uuid();renderTimes();updateSelection();});
   $('#booking-form').addEventListener('submit',e=>{e.preventDefault();const f=e.target;perform($('#booking-submit'),async()=>{await rawCall('book',{equipmentId,date:selectedDate,start:selectedTime,end:C.clock(C.minutes(selectedTime)+duration),name:user.name,organization:f.elements.organization.value,laboratory:f.elements.laboratory.value,purpose:f.elements.purpose.value,requestId});toast(t('requested'),false,'requested');f.elements.purpose.value='';f.elements.confirm.checked=false;await refresh();await loadAvailability();});});
+  async function openExtend(id){
+    const seq=++extendLoad,session=token;extendId=id;
+    const f=$('#booking-extend-form');f.elements.end.innerHTML='';f.elements.end.disabled=true;f.querySelector('button').disabled=true;
+    $('#booking-extend-current').textContent='';const message=$('#booking-extend-message');delete message.dataset.error;message.dataset.b='loading';message.textContent=t('loading');
+    $('#booking-extend').showModal();
+    try{
+      const data=await rawCall('extensionOptions',{id});
+      if(seq!==extendLoad||session!==token||!$('#booking-extend').open)return;
+      f.dataset.version=data.expectedUpdatedAt;f.dataset.baseEnd=data.end;
+      $('#booking-extend-current').textContent=`${data.date} · ${data.start}–${data.end}`;
+      f.elements.end.innerHTML=data.ends.map(end=>`<option value="${esc(end)}">${esc(end)} (+${C.minutes(end)-C.minutes(data.end)} ${esc(t('minutes'))})</option>`).join('');
+      f.elements.end.disabled=!data.ends.length;f.querySelector('button').disabled=!data.ends.length;
+      if(data.ends.length)delete message.dataset.b;else message.dataset.b='noExtension';message.textContent=data.ends.length?'':t('noExtension');
+    }catch(error){if(seq===extendLoad&&session===token){delete message.dataset.b;message.dataset.error=error.message;message.textContent=(errors[error.message]||errors.SERVER)[lang==='hy'?1:0];failure(error);}}
+  }
+  $('#booking-extend-close').addEventListener('click',()=>{extendLoad++;$('#booking-extend').close();});
+  $('#booking-extend-form').addEventListener('submit',event=>{event.preventDefault();const f=event.target;if(!f.elements.end.value)return;
+    perform(f.querySelector('button'),async()=>{
+      try{await rawCall('extendBooking',{id:extendId,end:f.elements.end.value,expectedUpdatedAt:f.dataset.version});}
+      catch(error){await openExtend(extendId);throw error;}
+      extendLoad++;$('#booking-extend').close();await refresh();await loadAvailability();reportLoaded=false;toast(t('extendedSaved'),false,'extendedSaved');
+    });
+  });
+  root.addEventListener('click',event=>{const button=event.target.closest('[data-extend]');if(button)openExtend(button.dataset.extend);});
   function ownOrManaged(id){return [...bookings,...queue].find(b=>b.id===id);}
   function openShorten(id){
     const b=ownOrManaged(id);if(!b)return;shortenId=id;

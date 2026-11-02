@@ -71,6 +71,33 @@ var ICNTCore = (function () {
     if(minutes(end)<=minutes(b.start)||minutes(end)>=minutes(b.end))fail('SHORTEN_TIME');
     return end;
   }
+  function extensionContext(b,e,now) {
+    if(b.status!=='approved')fail('STATUS');
+    if(timestamp(b.date,b.end)<=now||b.endedEarlyAt)fail('PAST');
+    if(!e||e.id!==b.equipmentId||!isBookable(e.id))fail('EQUIPMENT');
+    e=settings(e);
+    if(e.condition==='out-of-order')fail('OUT_OF_ORDER');
+    if(!e.enabled)fail('DISABLED');
+    if(!e.days.split(',').map(Number).includes(new Date(date(b.date)+'T12:00:00Z').getUTCDay()))fail('CLOSED');
+    return e;
+  }
+  function extend(b,e,end,bookings,now) {
+    e=extensionContext(b,e,now);
+    var endMinute=minutes(end),start=minutes(b.start),open=minutes(e.open);
+    if(endMinute<=minutes(b.end))fail('EXTEND_TIME');
+    if(start<open||endMinute>minutes(e.close)||(endMinute-open)%e.slot||endMinute-start>e.maxMinutes)fail('HOURS');
+    if(conflicts(bookings,Object.assign({},b,{end:end}),b.id))fail('CONFLICT');
+    return end;
+  }
+  function extensionEnds(b,e,bookings,now) {
+    e=extensionContext(b,e,now);var ends=[],open=minutes(e.open);
+    for(var m=open;m<=minutes(e.close);m+=e.slot){
+      if(m<=minutes(b.end))continue;
+      try{ends.push(extend(b,e,clock(m),bookings,now));}
+      catch(error){if(!['HOURS','CONFLICT'].includes(error.message))throw error;}
+    }
+    return ends;
+  }
   function settings(e) {
     if (!e || !/^[a-z0-9-]+$/.test(String(e.id))) fail('EQUIPMENT');
     var open = minutes(e.open), close = minutes(e.close);
@@ -96,5 +123,5 @@ var ICNTCore = (function () {
     if (conflicts(bookings, b)) fail('CONFLICT');
     return b;
   }
-  return {shorten:shorten,BOOKABLE:BOOKABLE, monday:monday, addDays:addDays, layoutEvents:layoutEvents, resource:resource, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
+  return {extend:extend,extensionEnds:extensionEnds,shorten:shorten,BOOKABLE:BOOKABLE, monday:monday, addDays:addDays, layoutEvents:layoutEvents, resource:resource, isBookable:isBookable, condition:condition, fail: fail, email: email, text: text, date: date, minutes: minutes, clock: clock, day: day, timestamp: timestamp, active: active, conflicts: conflicts, settings: settings, validate: validate};
 })();
